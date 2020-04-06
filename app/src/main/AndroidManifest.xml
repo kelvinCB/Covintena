@@ -14,7 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Dato5Activityy"></activity>
+        <activity android:name=".Dato4Activity" />
+        <activity android:name=".Dato3Activity" />
+        <activity android:name=".Dato2Activity" />
+        <activity android:name=".Dato1Activity" />
+        <activity android:name=".RecomendacionesActivity" />
+        <activity android:name=".SubCategoriaActivity" />
+        <activity android:name=".VagModeActivity" />
+        <activity android:name=".FlappyVirusActivity" />
+        <activity android:name=".TriviaActivity" />
+        <activity android:name=".HeadsUpActivity" />
+        <activity android:name=".GamesActivity" />
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
