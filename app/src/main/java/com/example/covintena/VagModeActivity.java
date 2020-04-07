@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.example.covintena.interfaces.categoriasApi;
 import com.example.covintena.model.Categoria;
-import com.example.covintena.model.SubCategoria;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class VagModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vag_mode);
 
-        linearLayout = findViewById(R.id.contenedor);
+        linearLayout = findViewById(R.id.contenedordato1);
 
         getCategorias();
 

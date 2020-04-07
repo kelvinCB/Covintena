@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.covintena.interfaces.categoriasApi;
 import com.example.covintena.interfaces.subCategoriasApi;
-import com.example.covintena.model.Categoria;
 import com.example.covintena.model.SubCategoria;
 
 import java.util.List;
@@ -38,7 +36,7 @@ public class SubCategoriaActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.tvCategoria);
 
-        linearLayout = findViewById(R.id.contenedor);
+        linearLayout = findViewById(R.id.contenedordato1);
 
         textView.setText(nombreCategoria);
 
