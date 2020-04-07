@@ -6,7 +6,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface subCategoriaApi {
+public interface subCategoriasApi {
 
     @GET("subCategorias")
     Call<List<SubCategoria>> getSubCategoria();
