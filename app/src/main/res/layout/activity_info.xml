@@ -4,63 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoActivity">
-
-    <Button
-        android:id="@+id/DATO2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DATO2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DATO1" />
+    android:background="@drawable/fondovirus"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:text="InfoActivity"
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:background="#FFD600"
+        android:gravity="center_vertical"
+        android:text="  Menú Información"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/DATO5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:background="#BF03A7C0"
         android:text="DATO5"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DATO4"
-        app:layout_constraintVertical_bias="0.004" />
-
-    <Button
-        android:id="@+id/DATO3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DATO3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DATO2" />
-
-    <Button
-        android:id="@+id/DATO4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DATO4"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DATO3" />
 
     <Button
-        android:id="@+id/DATO1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="DATO1"
+        android:id="@+id/DATO6"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:background="#BFF36103"
+        android:text="DATO6"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/DATO5"
+        app:layout_constraintTop_toBottomOf="@+id/DATO4"
+        app:layout_constraintVertical_bias="0.428" />
+
+    <Button
+        android:id="@+id/DATO3"
+        android:layout_width="180dp"
+        android:layout_height="183dp"
+        android:background="#BFFF6247"
+        android:text="DATO3"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/DATO1" />
+
+    <Button
+        android:id="@+id/DATO1"
+        android:layout_width="180dp"
+        android:layout_height="183dp"
+        android:background="#BFECB313"
+        android:soundEffectsEnabled="false"
+        android:text="DATO1"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <Button
+        android:id="@+id/DATO2"
+        android:layout_width="180dp"
+        android:layout_height="183dp"
+        android:background="#BF00BFA5"
+        android:text="DATO2"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/DATO1"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <Button
+        android:id="@+id/DATO4"
+        android:layout_width="180dp"
+        android:layout_height="183dp"
+        android:background="#BF8EBE03"
+        android:text="DATO4"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/DATO3"
+        app:layout_constraintTop_toBottomOf="@+id/DATO2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

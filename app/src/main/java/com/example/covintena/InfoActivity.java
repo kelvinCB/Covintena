@@ -14,6 +14,7 @@ public class InfoActivity extends AppCompatActivity {
     Button btnDato3;
     Button btnDato4;
     Button btnDato5;
+    Button btnDato6;
 
 
     @Override
@@ -21,11 +22,15 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        getSupportActionBar().hide();
+
         btnDato1 = (Button)findViewById(R.id.DATO1);
         btnDato2 = (Button)findViewById(R.id.DATO2);
         btnDato3 = (Button)findViewById(R.id.DATO3);
         btnDato4 = (Button)findViewById(R.id.DATO4);
         btnDato5 = (Button)findViewById(R.id.DATO5);
+        btnDato6 = (Button)findViewById(R.id.DATO6);
+
 
 
         btnDato1.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,14 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InfoActivity.this, Dato5Activityy.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDato6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InfoActivity.this, Dato6Activity.class);
                 startActivity(intent);
             }
         });

@@ -18,6 +18,8 @@ public class GamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
 
+        getSupportActionBar().hide();
+
         btnHU = (Button)findViewById(R.id.buttonHU);
         btnTV = (Button)findViewById(R.id.buttonTV);
         btnFV = (Button)findViewById(R.id.buttonFV);
