@@ -12,10 +12,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FlappyVirusActivity gameView;
-    private Handler handler = new Handler();
-    private final static long TIMER_INTERVAL = 30;
-
     Button btnInfo;
     Button btnGames;
     Button btnVagMode;
@@ -24,13 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       
-       //Mover esta vaina
-        Intent intent = new Intent(MainActivity.this, ContenedorFlappyActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         btnInfo = (Button)findViewById(R.id.button);
         btnGames = (Button)findViewById(R.id.button2);

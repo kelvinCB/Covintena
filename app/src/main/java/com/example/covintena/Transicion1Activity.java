@@ -13,7 +13,7 @@ public class Transicion1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transicion1);
 
-        getSupportActionBar().hide();
+     //   getSupportActionBar().hide();
 
 
         new Handler().postDelayed(new Runnable() {
