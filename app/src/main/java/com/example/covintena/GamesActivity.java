@@ -18,7 +18,7 @@ public class GamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
 
-        getSupportActionBar().hide();
+     //  getSupportActionBar().hide();
 
         btnHU = (Button)findViewById(R.id.buttonHU);
         btnTV = (Button)findViewById(R.id.buttonTV);
@@ -44,8 +44,10 @@ public class GamesActivity extends AppCompatActivity {
         btnFV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GamesActivity.this, FlappyVirusActivity.class);
+                Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
+
+
             }
         });
 

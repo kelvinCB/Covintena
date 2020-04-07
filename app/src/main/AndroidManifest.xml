@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ContenedorFlappyActivity" />
-        <activity android:name=".MainActivity">
         <activity android:name=".Dato6Activity"></activity>
         <activity android:name=".Transicion3Activity" />
         <activity android:name=".Transicion2Activity" />
@@ -44,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

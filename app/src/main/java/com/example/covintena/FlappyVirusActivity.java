@@ -114,7 +114,6 @@ public class FlappyVirusActivity extends View {
     }
 
 
-
     @Override
     protected void onDraw(Canvas canvas) {
 

@@ -22,7 +22,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
 
         btnDato1 = (Button)findViewById(R.id.DATO1);
         btnDato2 = (Button)findViewById(R.id.DATO2);
