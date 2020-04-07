@@ -1,6 +1,5 @@
 package com.example.covintena;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.covintena.interfaces.recomendacionesApi;
-import com.example.covintena.interfaces.subCategoriasApi;
 import com.example.covintena.model.Recomendacion;
 
 import java.util.List;
@@ -35,7 +33,7 @@ public class RecomendacionesActivity extends AppCompatActivity {
         nombreSubCategoria += getIntent().getExtras().getString("nombreSubCategoria");
 
         textView = findViewById(R.id.tvSubCategoria);
-        linearLayout = findViewById(R.id.contenedor);
+        linearLayout = findViewById(R.id.contenedordato1);
         textView.setText(nombreSubCategoria);
 
         getRecomendaciones(idSubCategoria);
@@ -67,7 +65,7 @@ public class RecomendacionesActivity extends AppCompatActivity {
                         button.setText(recomendacion.getRecomendacion());
                         //poner background al boton
                         //button.setBackgroundResource(R.drawable.botones3);
-                        button.setTextSize(50);
+                        button.setTextSize(20);
                         //color del texto del boton
                         //button.setTextColor(getApplication().getResources()
                         // .getColor(R.color.blanco));

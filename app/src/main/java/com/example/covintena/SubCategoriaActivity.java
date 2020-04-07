@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.covintena.interfaces.categoriasApi;
 import com.example.covintena.interfaces.subCategoriasApi;
-import com.example.covintena.model.Categoria;
 import com.example.covintena.model.SubCategoria;
 
 import java.util.List;
@@ -38,7 +36,7 @@ public class SubCategoriaActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.tvCategoria);
 
-        linearLayout = findViewById(R.id.contenedor);
+        linearLayout = findViewById(R.id.contenedordato1);
 
         textView.setText(nombreCategoria);
 
@@ -71,12 +69,11 @@ public class SubCategoriaActivity extends AppCompatActivity {
                     if (subCategoria.getCategoria().get_id().equals(idCategoria)){
                         Button button = new Button(getApplicationContext());
                         button.setText(subCategoria.getNombre());
-                        //poner background al boton
-                        //button.setBackgroundResource(R.drawable.botones3);
+                        button.setBackgroundResource(R.drawable.botones_menu); //poner background al boton
                         button.setTextSize(50);
                         //color del texto del boton
-                        //button.setTextColor(getApplication().getResources()
-                        // .getColor(R.color.blanco));
+                        button.setTextColor(getApplication().getResources().getColor(R.color.blanco));
+                        button.setHeight(170);
                         button.setHeight(170);
                         button.setLayoutParams(lp);
                         button.setOnClickListener(new View.OnClickListener() {
