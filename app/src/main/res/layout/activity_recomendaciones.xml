@@ -4,28 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/negrogris"
     tools:context=".RecomendacionesActivity">
 
     <TextView
-        android:id="@+id/tvSubCategoria"
+        android:id="@+id/textView62"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:background="#1B8849"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45sp"
-        android:text="TextView"
-        android:textSize="42sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView62"
+        app:srcCompat="@drawable/vagmode" />
+
+    <TextView
+        android:id="@+id/tvSubCategoria"
+        android:layout_width="222dp"
+        android:layout_height="77dp"
+        android:background="#1B8849"
+        android:gravity="center_vertical"
+        android:text="Recomendaciones"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView62"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView4"
-        android:layout_width="421dp"
-        android:layout_height="475dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/botones_menu2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView33">
 
         <LinearLayout
             android:id="@+id/contenedordato1"

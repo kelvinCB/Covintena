@@ -15,8 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GameOverTriviaActivity"></activity>
-        <activity android:name=".GameOverHeadsUpActivity" />
+        <activity android:name=".AudiosActivity"></activity>
         <activity android:name=".ContenedorFlappyActivity" />
         <activity android:name=".Dato6Activity" />
         <activity android:name=".Transicion3Activity" />

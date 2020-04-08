@@ -57,10 +57,10 @@ public class VagModeActivity extends AppCompatActivity {
                 for (final Categoria categoria: categoriaList){
                     Button button = new Button(getApplicationContext());
                     button.setText(categoria.getNombre());
-                    //button.setBackgroundResource(R.drawable.botones3); //poner background al boton
+                    button.setBackgroundResource(R.drawable.botones_menu); //poner background al boton
                     button.setTextSize(50);
                     //color del texto del boton
-                    //button.setTextColor(getApplication().getResources().getColor(R.color.blanco));
+                    button.setTextColor(getApplication().getResources().getColor(R.color.blanco));
                     button.setHeight(170);
                     button.setLayoutParams(lp);
                     button.setOnClickListener(new View.OnClickListener() {

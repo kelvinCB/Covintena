@@ -1,5 +1,6 @@
 package com.example.covintena;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -11,7 +12,8 @@ import java.util.TimerTask;
 public class ContenedorFlappyActivity extends AppCompatActivity {
 
 
-    private FlappyVirusActivity gameView;
+    private FlappyVirusActivity flappyVirusActivity;
+    private GameOverActivity gameOverActivity;
     private Handler handler = new Handler();
     private final static long TIMER_INTERVAL = 30;
 
@@ -20,9 +22,10 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_game_over);
+        flappyVirusActivity = new FlappyVirusActivity(this);
+        gameOverActivity = new GameOverActivity();
 
-        gameView = new FlappyVirusActivity(this);
-        setContentView(gameView);
+        setContentView(flappyVirusActivity);
 
         // Start the timer.
         Timer timer = new Timer();
@@ -32,12 +35,12 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        gameView.invalidate();
+                        flappyVirusActivity.invalidate();
                     }
                 });
+
             }
         }, 0, TIMER_INTERVAL);
-
 
     }
 

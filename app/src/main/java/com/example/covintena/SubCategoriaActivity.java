@@ -69,12 +69,11 @@ public class SubCategoriaActivity extends AppCompatActivity {
                     if (subCategoria.getCategoria().get_id().equals(idCategoria)){
                         Button button = new Button(getApplicationContext());
                         button.setText(subCategoria.getNombre());
-                        //poner background al boton
-                        //button.setBackgroundResource(R.drawable.botones3);
+                        button.setBackgroundResource(R.drawable.botones_menu); //poner background al boton
                         button.setTextSize(50);
                         //color del texto del boton
-                        //button.setTextColor(getApplication().getResources()
-                        // .getColor(R.color.blanco));
+                        button.setTextColor(getApplication().getResources().getColor(R.color.blanco));
+                        button.setHeight(170);
                         button.setHeight(170);
                         button.setLayoutParams(lp);
                         button.setOnClickListener(new View.OnClickListener() {

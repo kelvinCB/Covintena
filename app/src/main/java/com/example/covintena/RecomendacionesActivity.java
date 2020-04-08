@@ -65,7 +65,7 @@ public class RecomendacionesActivity extends AppCompatActivity {
                         button.setText(recomendacion.getRecomendacion());
                         //poner background al boton
                         //button.setBackgroundResource(R.drawable.botones3);
-                        button.setTextSize(50);
+                        button.setTextSize(20);
                         //color del texto del boton
                         //button.setTextColor(getApplication().getResources()
                         // .getColor(R.color.blanco));
