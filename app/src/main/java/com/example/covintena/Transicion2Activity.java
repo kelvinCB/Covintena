@@ -24,7 +24,7 @@ public class Transicion2Activity extends AppCompatActivity {
                 finish();
 
             }
-        },4000);
+        },1000);
 
     }
 }

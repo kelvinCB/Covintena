@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnInfo;
     Button btnGames;
     Button btnVagMode;
+    Button btnAudios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnInfo = (Button)findViewById(R.id.button);
         btnGames = (Button)findViewById(R.id.button2);
         btnVagMode = (Button)findViewById(R.id.button3);
-
+        btnAudios = (Button)findViewById(R.id.button4);
 
         //Botón Info
         btnInfo.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Transicion3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Botón Audio
+        btnAudios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AudiosActivity.class);
                 startActivity(intent);
             }
         });
