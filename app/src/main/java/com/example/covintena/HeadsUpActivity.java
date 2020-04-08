@@ -11,13 +11,9 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
-import com.example.covintena.interfaces.categoriasApi;
 import com.example.covintena.interfaces.preguntasApi;
-import com.example.covintena.model.Categoria;
 import com.example.covintena.model.Pregunta;
-import com.example.covintena.model._respuesta;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -177,17 +173,14 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
     private void startSensor() {
-        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorEventListener, sensor,
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private void stopSensor() {
         sensorManager.unregisterListener(sensorEventListener);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        countDownTimer.onFinish();
-        finish();
-    }
+
+
 }

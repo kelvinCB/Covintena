@@ -213,11 +213,4 @@ public class TriviaActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        countDownTimer.onFinish();
-        finish();
-    }
-
 }
