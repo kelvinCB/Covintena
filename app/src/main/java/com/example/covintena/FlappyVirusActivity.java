@@ -98,6 +98,7 @@ public class FlappyVirusActivity extends View {
 
     //Sonidos
     public static boolean sonidoTos = false;
+    public static boolean sonidoPuntos = false;
 
     public FlappyVirusActivity(Context context) {
         super(context);
@@ -216,6 +217,9 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(jabonLeftX, jabonLeftY)) {
             score += 10;
             jabonLeftX = -100;
+            //Poner Sonido de puntos
+            ContenedorFlappyActivity.sonidoPuntos = true;
+            sonidoPuntos = ContenedorFlappyActivity.sonidoPuntos;
             ponerImagen();
         }
         if (jabonLeftX < 0) {
@@ -231,6 +235,10 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(jabonLeftX1, jabonLeftY1)) {
             score += 10;
             jabonLeftX1 = -100;
+            //Poner Sonido de puntos
+            ContenedorFlappyActivity.sonidoPuntos = true;
+            sonidoPuntos = ContenedorFlappyActivity.sonidoPuntos;
+            ponerImagen();
         }
         if (jabonLeftX1 < 0) {
             jabonLeftX1 = canvasWidth + 20;
@@ -248,11 +256,8 @@ public class FlappyVirusActivity extends View {
             life_count--;
             ContenedorFlappyActivity.sonidoTos = true;
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
-         /*   System.out.println("La vida está en: "+life_count);
-            System.out.println("El valor de cambiar es: "+cambiar);*/
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-            ///    System.out.println("La vida está en: "+life_count);
                 ContenedorFlappyActivity.cambio = true;
                 cambiar = ContenedorFlappyActivity.cambio;
 

@@ -89,11 +89,11 @@ public class GamesActivity extends AppCompatActivity {
         btnjugarfv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
-                Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity
-                        .class);
+                Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.flappyvirus1);
+                sb.start();
+              //  sb.setLooping(true);
             }
         });
 

@@ -18,8 +18,13 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
     private final static long TIMER_INTERVAL = 30;
     public static boolean cambio = false;
     private static boolean aux;
+
+    //Sonidos
     public static boolean sonidoTos = false;
     private static boolean auxSonidoTos;
+
+    public static boolean sonidoPuntos = false;
+    private static boolean auxSonidoPuntos;
 
 
     @Override
@@ -42,6 +47,12 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                         flappyVirusActivity.invalidate();
                         aux = FlappyVirusActivity.cambiar;
                         auxSonidoTos = FlappyVirusActivity.sonidoTos;
+                        auxSonidoPuntos = FlappyVirusActivity.sonidoPuntos;
+                        if(auxSonidoPuntos == true){
+                            FlappyVirusActivity.sonidoPuntos = false;
+                            MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
+                            puntos.start();
+                        }
                         if(auxSonidoTos == true){
                             FlappyVirusActivity.sonidoTos = false;
                             MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.tos);
@@ -68,9 +79,10 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
             Intent intent = new Intent(ContenedorFlappyActivity.this, GameOverActivity.class);
             startActivity(intent);
             finish();
-
+            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.coronado1);
+            sb.start();
         }
-    }, 500);
+    }, 2000);
 
     }
 
