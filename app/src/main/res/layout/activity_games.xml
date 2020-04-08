@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/negrogris"
     tools:context=".GamesActivity">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="360dp"
         android:layout_height="61dp"
-        android:background="#DD2C00"
+        android:background="#6200EA"
         android:gravity="center_vertical"
         android:text="  Juegos"
         android:textColor="@android:color/white"
@@ -21,67 +21,95 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="wrap_content"
-        android:layout_height="185dp"
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/negrogris"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/hu" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <ImageView
-        android:id="@+id/imageView26"
-        android:layout_width="0dp"
-        android:layout_height="185dp"
-        android:background="#AEEA00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonFV"
-        app:layout_constraintVertical_bias="0.083"
-        app:srcCompat="@drawable/flappygame" />
+        <LinearLayout
+            android:id="@+id/contenedordato2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="356dp"
-        android:layout_height="185dp"
-        app:layout_constraintEnd_toEndOf="@+id/buttonTV"
-        app:layout_constraintTop_toBottomOf="@+id/imageView21"
-        app:srcCompat="@drawable/trivia" />
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/buttonHU"
-        android:layout_width="361dp"
-        android:layout_height="186dp"
-        android:background="#1AFFD600"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="375dp"
+                android:layout_height="216dp"
+                app:srcCompat="@drawable/hu" />
 
-    <Button
-        android:id="@+id/buttonTV"
-        android:layout_width="358dp"
-        android:layout_height="187dp"
-        android:background="#00FF0000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView18" />
+            <Button
+                android:id="@+id/buttonHU"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#FFD600"
+                android:text="JUGAR"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonFV"
-        android:layout_width="356dp"
-        android:layout_height="0dp"
-        android:background="#00AEEA00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView18"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                app:srcCompat="@drawable/trivia" />
+
+            <Button
+                android:id="@+id/buttonTV"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#D50000"
+                android:text="JUGAR"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="match_parent"
+                android:layout_height="183dp"
+                app:srcCompat="@drawable/flappygame" />
+
+            <Button
+                android:id="@+id/buttonFV"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#58C215"
+                android:text="JUGAR"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
