@@ -208,5 +208,6 @@ public class HeadsUpActivity extends AppCompatActivity {
         if (crono){
             countDownTimer.cancel();
         }
+        stopSensor();
     }
 }
