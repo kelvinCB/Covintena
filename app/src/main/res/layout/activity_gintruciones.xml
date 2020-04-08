@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondofinal"
+    tools:context=".gintrucionesActivity">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:background="#53755C"
+        android:gravity="center_vertical"
+        android:text="  COVINTENA"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <LinearLayout
+            android:id="@+id/contenedordato2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="match_parent"
+                android:layout_height="297dp"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#BF4FB35C"
+                android:gravity="center|center_vertical"
+                android:text="¿QUÉ ES?"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView76"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#801E4122" />
+
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#801E4122"
+                android:gravity="center"
+                android:text="No sabes que hacer, lo sé, lo veo en tu cara. Ven y disfruta de esta COVINTENA. Te brindamos una lista de películas, series y libros. ¿Qué quieres saber del COVID? También tenemos informaciones... Pero lo mejor, tenemos unas trivias para morirse. Ponte tus guantes y una mascarilla, vamos a ir a un viaje en contra del COVID en Flappy Virus. Usa la app en tus tiempos libres y diviértete aprendiendo."
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView75"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#801E4122" />
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#BFD50000"
+                android:gravity="center|center_vertical"
+                android:text="COVID - 19"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView77"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80860303" />
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80860303"
+                android:gravity="center"
+                android:text="¿Que no sabes lo que es el COVID-19? ¿Y por qué es que crees que todos estamos en nuestras casas? ¿Necesitas tips para quitarte los guantes? ¿O es que no sabes donde se originó el Coronavirus? Esta y muchas más pueden ser tus dudas, y aquí se te acabó el &quot;Yo no sé&quot;. Entra a nuestra sección informativa y enterate de to'."
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView78"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80860303" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#BFFFD600"
+                android:gravity="center|center_vertical"
+                android:text="JUEGOS"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80947E08" />
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80947E08"
+                android:gravity="center"
+                android:text="Sabes todo lo referente al COVID-19? Pues te retamos a nuestra trivia de preguntas. Vamos a ver si es que sabes de verdad. O ¿qué? quieres jugar con alguien más... Fácil, vamos a nuestro Heads Up! y juega con tu compañero a ver si te las sabes todas. Ahn! Pero no quieres responder preguntas. Entonces, ve a nuestro Flappy Virus y lucha junto al jabón en contra de COVID-19. No dejes que te agarre!"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView80"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80947E08" />
+
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#BF00B8D4"
+                android:gravity="center|center_vertical"
+                android:text="VAGO MODO"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView84"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80025561" />
+
+            <TextView
+                android:id="@+id/textView85"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80025561"
+                android:gravity="center"
+                android:text="¿Estás aburrido? ¿Tienes tiempo? Veamos una película, o mejor una serie entretenida, ¿quieres leer un libro? o ¡mejor! Escuchemos música. Bueno, lo que sea que quieres hacer, tenemos una lista de sugerencias que te gustarán. Siéntate a escuchar una lista de reproducción de Wolfgang Amadeus Mozart o de Mozart La Para. Esta y mucho más sugerencias tenemos para ti!"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView86"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80025561" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView82"
+        android:layout_width="84dp"
+        android:layout_height="82dp"
+        android:background="#00BFA5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/escucha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

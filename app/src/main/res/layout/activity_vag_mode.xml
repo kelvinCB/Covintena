@@ -12,7 +12,7 @@
         android:layout_height="78dp"
         android:background="#015C74"
         android:gravity="center_vertical"
-        android:text="  Modo Vago"
+        android:text="  MODO VAGO"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

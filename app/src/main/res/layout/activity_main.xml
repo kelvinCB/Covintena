@@ -99,22 +99,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logocovintena" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="84dp"
-        android:layout_height="82dp"
-        android:background="#00BFA5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/button4"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:id="@+id/btnhelp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@drawable/escucha"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/ayuda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
