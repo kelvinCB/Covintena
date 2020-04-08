@@ -38,7 +38,7 @@
         <activity android:name=".GameOverActivity" />
         <activity android:name=".VagModeActivity" /> <!-- <activity android:name=".FlappyVirusActivity" /> -->
         <activity android:name=".TriviaActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
         <activity android:name=".HeadsUpActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".GamesActivity" />
