@@ -2,6 +2,7 @@ package com.example.covintena;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,11 +11,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
-import com.example.covintena.interfaces.categoriasApi;
 import com.example.covintena.interfaces.preguntasApi;
-import com.example.covintena.model.Categoria;
 import com.example.covintena.model.Pregunta;
-import com.example.covintena.model._respuesta;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,13 +30,14 @@ public class HeadsUpActivity extends AppCompatActivity {
     private TextView tvPregunta;
     private TextView tvRespuesta;
     private TextView tvCronometro;
-    private List<Pregunta> preguntaList;
+
     CountDownTimer countDownTimer;
     SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
-    private Boolean aux=false;
+    private Boolean aux=true;
     private int correctas = 0, incorrectas = 0;
+    private Boolean crono = false;
 
 
     @Override
@@ -69,7 +68,7 @@ public class HeadsUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                preguntaList = response.body();
+                final List<Pregunta> preguntaList = response.body();
                 CountDownTimer countDownTimer1 = new CountDownTimer(5000,
                         1000) {
                     @Override
@@ -81,7 +80,7 @@ public class HeadsUpActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
-                        countDownTimer = new CountDownTimer(6000, 1000) {
+                        countDownTimer = new CountDownTimer(60000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 tvCronometro.setText(String.format(Locale.getDefault(), "%d",
@@ -93,7 +92,7 @@ public class HeadsUpActivity extends AppCompatActivity {
                                 menu();
                             }
                         }.start();
-                        activateSensor();
+                        activateSensor(preguntaList);
                     }
                 }.start();
             }
@@ -107,14 +106,22 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
     private void menu(){
-
+        crono = false;
+        stopSensor();
+        Intent intent = new Intent(HeadsUpActivity.this,
+                GameOverHeadsUpActivity.class);
+        intent.putExtra("correctas", correctas);
+        intent.putExtra("incorrectas", incorrectas);
+        startActivity(intent);
     }
 
-    private void activateSensor() {
+    private void activateSensor(final List<Pregunta> preguntaList) {
+        crono = true;
         if (preguntaList != null) {
             //Randomizar el listado de palabras
             Collections.shuffle(preguntaList, new Random());
             tvPregunta.setText(preguntaList.get(0).getPregunta());
+
             for (int i = 0; i < 4; i++){
                 if (preguntaList.get(0).getRespuesta().get(i).getValor()){
                     tvRespuesta.setText(preguntaList.get(0).getRespuesta().get(i).getTexto());
@@ -131,30 +138,30 @@ public class HeadsUpActivity extends AppCompatActivity {
                     float z = event.values[2];
                     //Evento que se desata al mover el celular hacia abajo
                     if (z < -5 && aux) {
-                        aux=false;
+                        aux = false;
                         correctas++;
-                        //correctSound();
+                        correctSound();
                     }
                     //Evento que se desata al mover el celular hacia arriba
                     if (z > 5 && aux) {
-                        aux=false;
+                        aux = false;
                         incorrectas++;
-                        //incorrectSound();
-
+                        incorrectSound();
                     }
                     //Reinicio de variables
                     if (!aux && z < 2 && z > -2) {
                         i++;
+
                         if (i < preguntaList.size()) {
                             tvPregunta.setText(preguntaList.get(i).getPregunta());
-                            for (int j = 0; j < 4; j++){
-                                if (preguntaList.get(i).getRespuesta().get(j).getValor()){
+                            for (int j = 0; j < 4; j++) {
+                                if (preguntaList.get(i).getRespuesta().get(j).getValor()) {
                                     tvRespuesta.setText(preguntaList.get(i).getRespuesta().get(j)
                                             .getTexto());
                                 }
+                                aux = true;
                             }
-                            aux = true;
-                        } else {
+                        }else{
                             countDownTimer.onFinish();
                         }
                     }
@@ -170,11 +177,28 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
     private void startSensor() {
-        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorEventListener, sensor,
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private void stopSensor() {
         sensorManager.unregisterListener(sensorEventListener);
     }
 
+
+    private void correctSound(){
+        //Sonido cuando es correcto
+    }
+
+    private void incorrectSound(){
+        //Sonido cuando es incorrecto
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (crono){
+            countDownTimer.cancel();
+        }
+    }
 }

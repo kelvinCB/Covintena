@@ -7,6 +7,9 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
     <application
         android:allowBackup="true"
         android:allowClearUserData="true"
@@ -18,6 +21,8 @@
         <activity android:name=".gintrucionesActivity"></activity>
         <activity android:name=".InstruccionesActitvity" />
         <activity android:name=".AudiosActivity" />
+        <activity android:name=".GameOverTriviaActivity" />
+        <activity android:name=".GameOverHeadsUpActivity" />
         <activity android:name=".ContenedorFlappyActivity" />
         <activity android:name=".Dato6Activity" />
         <activity android:name=".Transicion3Activity" />
@@ -30,9 +35,12 @@
         <activity android:name=".Dato1Activity" />
         <activity android:name=".RecomendacionesActivity" />
         <activity android:name=".SubCategoriaActivity" />
+        <activity android:name=".GameOverActivity" />
         <activity android:name=".VagModeActivity" /> <!-- <activity android:name=".FlappyVirusActivity" /> -->
-        <activity android:name=".TriviaActivity" />
-        <activity android:name=".HeadsUpActivity" />
+        <activity android:name=".TriviaActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".HeadsUpActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".GamesActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".MainActivity" />
