@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -38,12 +39,12 @@ public class FlappyVirusActivity extends View {
     //Position and speed of jabon0 Bitmap
     private int jabonLeftX;
     private int jabonLeftY;
-    private int jabonLeftSpeed = 15;
+    private int jabonLeftSpeed = 10;
 
     //Position and speed of jabon1 Bitmap
     private int jabonLeftX1;
     private int jabonLeftY1;
-    private int jabonLeftSpeed1 = 20;
+    private int jabonLeftSpeed1 = 15;
 
     //Position and speed of Virus Bitmap
     private int virusLeftX;
@@ -79,11 +80,12 @@ public class FlappyVirusActivity extends View {
 
     // Score
     private Paint scorePaint = new Paint();
-    private int score;
+    private static int score;
+    public static int total_score;
 
     // Level
     private Paint levelPaint = new Paint();
-    private  int level = 1;
+    private static  int level = 1;
 
     // Life
     private Bitmap life[] = new Bitmap[2];
@@ -93,7 +95,11 @@ public class FlappyVirusActivity extends View {
     private boolean touch_flg = false;
 
     //Change Activity
-    public static boolean  cambiar = false;
+    public static boolean cambiar = false;
+
+    //Sonidos
+    public static boolean sonidoTos = false;
+    public static boolean sonidoPuntos = false;
 
     public FlappyVirusActivity(Context context) {
         super(context);
@@ -109,7 +115,7 @@ public class FlappyVirusActivity extends View {
         virus[1] = BitmapFactory.decodeResource(getResources(), R.drawable.coronavirs);
 
        // Imagen de la raya de la calle
-        raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
+    //    raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
         raya_calle[1] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
         // Imagen de las nubes
@@ -119,10 +125,8 @@ public class FlappyVirusActivity extends View {
         //Imagen del fondo principal donde vuela el muchacho
           fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
 
-
-
         //Imagen de los edificios
-      /*    edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
+      /*   edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
           edificio2 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio2);*/
 
         //Imagenes de los corazones
@@ -214,6 +218,9 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(jabonLeftX, jabonLeftY)) {
             score += 10;
             jabonLeftX = -100;
+            //Poner Sonido de puntos
+            ContenedorFlappyActivity.sonidoPuntos = true;
+            sonidoPuntos = ContenedorFlappyActivity.sonidoPuntos;
             ponerImagen();
         }
         if (jabonLeftX < 0) {
@@ -229,13 +236,17 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(jabonLeftX1, jabonLeftY1)) {
             score += 10;
             jabonLeftX1 = -100;
+            //Poner Sonido de puntos
+            ContenedorFlappyActivity.sonidoPuntos = true;
+            sonidoPuntos = ContenedorFlappyActivity.sonidoPuntos;
+            ponerImagen();
         }
         if (jabonLeftX1 < 0) {
             jabonLeftX1 = canvasWidth + 20;
             jabonLeftY1 = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
         }
 
-        //posicion del jabon0
+        //posicion del jabon1
         canvas.drawBitmap(jabon[1], jabonLeftX1, jabonLeftY1, null);
 
 
@@ -244,11 +255,10 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(virusLeftX, virusLeftY)) {
             virusLeftX = -100;
             life_count--;
-            System.out.println("La vida está en: "+life_count);
-            System.out.println("El valor de cambiar es: "+cambiar);
+            ContenedorFlappyActivity.sonidoTos = true;
+            sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                System.out.println("La vida está en: "+life_count);
                 ContenedorFlappyActivity.cambio = true;
                 cambiar = ContenedorFlappyActivity.cambio;
 
@@ -268,10 +278,11 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(virusLeftX1, virusLeftY1)) {
             virusLeftX1 = -100;
             life_count--;
-            System.out.println("La vida está en: "+life_count);
+            ContenedorFlappyActivity.sonidoTos = true;
+            sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                System.out.println("La vida está en: "+life_count);
+          //      System.out.println("La vida está en: "+life_count);
                 ContenedorFlappyActivity.cambio = true;
                 cambiar = ContenedorFlappyActivity.cambio;
             }
@@ -283,7 +294,7 @@ public class FlappyVirusActivity extends View {
             virusLeftY1 = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
         }
         //Posicion del virus
-        canvas.drawBitmap(virus[0], virusLeftX1, virusLeftY1, null);
+        canvas.drawBitmap(virus[1], virusLeftX1, virusLeftY1, null);
 
         // Score
         canvas.drawText("Puntos : " + score, 20, 60, scorePaint);//Dibuja el score casi al inicio
@@ -347,6 +358,7 @@ public class FlappyVirusActivity extends View {
           score = 0;
           level++;
           fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
+          cambiarVelocidadJuego(level);
         }else{
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
             System.out.println("No encuentro la foto de fondo");
@@ -354,5 +366,28 @@ public class FlappyVirusActivity extends View {
 
         }
 
+        public void cambiarVelocidadJuego(int level){
+        if(level == 2) {
+            jabonLeftSpeed = 20;
+            jabonLeftSpeed1 = 25;
+            virusLeftSpeed = 20;
+            virusLeftSpeed1 = 25;
+            rayaLeftSpeed1 = 25;
+        }else if(level == 3){
+            jabonLeftSpeed = 30;
+            jabonLeftSpeed1 = 35;
+            virusLeftSpeed = 30;
+            virusLeftSpeed1 = 35;
+            rayaLeftSpeed1 = 35;
+        }
+        }
+
+        public static int totalScore(){
+
+        total_score = ((level*300) + score)-300;
+
+        return  total_score;
+
+        }
 
 }

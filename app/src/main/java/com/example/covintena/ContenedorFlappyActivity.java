@@ -1,6 +1,7 @@
 package com.example.covintena;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -18,6 +19,12 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
     public static boolean cambio = false;
     private static boolean aux;
 
+    //Sonidos
+    public static boolean sonidoTos = false;
+    private static boolean auxSonidoTos;
+
+    public static boolean sonidoPuntos = false;
+    private static boolean auxSonidoPuntos;
 
 
     @Override
@@ -39,6 +46,18 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
 
                         flappyVirusActivity.invalidate();
                         aux = FlappyVirusActivity.cambiar;
+                        auxSonidoTos = FlappyVirusActivity.sonidoTos;
+                        auxSonidoPuntos = FlappyVirusActivity.sonidoPuntos;
+                        if(auxSonidoPuntos == true){
+                            FlappyVirusActivity.sonidoPuntos = false;
+                            MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
+                            puntos.start();
+                        }
+                        if(auxSonidoTos == true){
+                            FlappyVirusActivity.sonidoTos = false;
+                            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.tos);
+                            sb.start();
+                        }
                         System.out.println("El valor de la variable auxiliar es: "+aux);
                         if(aux==true) {
                             llamarGameOver();
@@ -58,11 +77,15 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         @Override
         public void run() {
             Intent intent = new Intent(ContenedorFlappyActivity.this, GameOverActivity.class);
+            intent.putExtra("score", FlappyVirusActivity.totalScore());
             startActivity(intent);
+
             finish();
+            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.coronado2);
+            sb.start();
 
         }
-    }, 500);
+    }, 2000);
 
     }
 
