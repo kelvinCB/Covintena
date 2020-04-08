@@ -24,10 +24,10 @@ public class FlappyVirusActivity extends View {
     private int canvasHeight;
 
     // Bird
-    private Bitmap bird[] = new Bitmap[2];
-    private int birdX = 10;
-    private int birdY;
-    private int birdSpeed;
+    private Bitmap jerry[] = new Bitmap[2];
+    private int jerryX = 10;
+    private int jerryY;
+    private int jerrySpeed;
 
     //private Bitmap images;
     private Bitmap virus[] = new Bitmap[2];
@@ -99,8 +99,8 @@ public class FlappyVirusActivity extends View {
         super(context);
 
         //Imagenes del muchacho con cohete y sin cohete
-        bird[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_no_volando);
-        bird[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_volando);
+        jerry[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_no_volando);
+        jerry[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_volando);
 
         //Imagenes del jabon y del virus
         jabon[0] = BitmapFactory.decodeResource(getResources(), R.drawable.jabon);
@@ -143,7 +143,7 @@ public class FlappyVirusActivity extends View {
         levelPaint.setAntiAlias(true);
 
         // First position.
-        birdY = 500;
+        jerryY = 500;
         score = 0;
         life_count = 3;
 
@@ -157,8 +157,8 @@ public class FlappyVirusActivity extends View {
         canvasHeight = canvas.getHeight();
 
         // Bird
-        int minBirdY = bird[0].getHeight(); // Altura donde inicia el pajarito
-        int maxBirdY = canvasHeight - bird[0].getHeight() * 2; //Hasta donde llega a caer el pajarito //5 en mi cel
+        int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
+        int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el pajarito //5 en mi cel
 
         canvas.drawBitmap(fondoImage, 0, 0, null); // Hasta donde llega drawImage de fondo
 
@@ -168,17 +168,17 @@ public class FlappyVirusActivity extends View {
             canvas.drawBitmap(edificio2, 630,720,null); // Posicion del edificio 2
         }
 
-        birdY += birdSpeed;
-        if (birdY < minBirdY) birdY = minBirdY;
-        if (birdY > maxBirdY) birdY = maxBirdY;
-        birdSpeed += 2;
+        jerryY += jerrySpeed;
+        if (jerryY < minBirdY) jerryY = minBirdY;
+        if (jerryY > maxBirdY) jerryY = maxBirdY;
+        jerrySpeed += 2;
 
         if (touch_flg) {
             // Flap wings.
-            canvas.drawBitmap(bird[1], birdX, birdY, null);
+            canvas.drawBitmap(jerry[1], jerryX, jerryY, null);
             touch_flg = false;
         } else {
-            canvas.drawBitmap(bird[0], birdX, birdY, null);
+            canvas.drawBitmap(jerry[0], jerryX, jerryY, null);
         }
 
 
@@ -300,8 +300,8 @@ public class FlappyVirusActivity extends View {
     }
 
     public boolean hitCheck(int x, int y) {
-        if (birdX < x && x < (birdX + bird[0].getWidth()) &&
-                birdY < y && y < (birdY + bird[0].getHeight())) {
+        if (jerryX < x && x < (jerryX + jerry[0].getWidth()) &&
+                jerryY < y && y < (jerryY + jerry[0].getHeight())) {
             return true;
         }
         return false;
@@ -311,7 +311,7 @@ public class FlappyVirusActivity extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             touch_flg = true;
-            birdSpeed = -25; //Gravedad del pajarito
+            jerrySpeed = -25; //Gravedad de jerry
         }
         return true;
     }
@@ -335,6 +335,7 @@ public class FlappyVirusActivity extends View {
         }else if (score>=300 && score<350){
           score = 0;
           level++;
+          fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
         }else{
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
             System.out.println("No encuentro la foto");
