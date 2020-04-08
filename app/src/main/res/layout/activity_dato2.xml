@@ -13,7 +13,7 @@
         android:layout_height="78dp"
         android:background="#E2B901"
         android:gravity="center|center_vertical"
-        android:text="Síntomas y Propagación"
+        android:text="SÍNTOMAS Y PROPAGACIÓN"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
