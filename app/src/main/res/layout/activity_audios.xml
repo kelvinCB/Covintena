@@ -42,7 +42,7 @@
         android:layout_height="78dp"
         android:background="#404096"
         android:gravity="center_vertical"
-        android:text="  Audios"
+        android:text="  AUDIOS"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

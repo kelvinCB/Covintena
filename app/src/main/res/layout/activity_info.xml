@@ -10,10 +10,10 @@
     <TextView
         android:id="@+id/textView14"
         android:layout_width="0dp"
-        android:layout_height="78dp"
+        android:layout_height="82dp"
         android:background="#E53935"
         android:gravity="center_vertical"
-        android:text="  Información (COVID - 19)"
+        android:text="  INFO (COVID - 19)"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -110,6 +110,25 @@
         app:layout_constraintStart_toEndOf="@+id/DATO5"
         app:layout_constraintTop_toBottomOf="@+id/DATO4"
         app:layout_constraintVertical_bias="0.428" />
+
+    <TextView
+        android:id="@+id/textView81"
+        android:layout_width="84dp"
+        android:layout_height="82dp"
+        android:background="#00BFA5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnaudio"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/escucha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/negrogris"
+    android:background="@drawable/fondojuegos"
     tools:context=".GamesActivity">
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="360dp"
-        android:layout_height="61dp"
-        android:background="#6200EA"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#006C79"
         android:gravity="center_vertical"
-        android:text="  Juegos"
+        android:text="  JUEGOS"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,13 +25,11 @@
         android:id="@+id/scrollView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/negrogris"
+        android:background="#BF00353A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <LinearLayout
             android:id="@+id/contenedordato2"
@@ -40,24 +38,27 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView63"
+                android:id="@+id/textView70"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <ImageView
-                android:id="@+id/imageView21"
-                android:layout_width="375dp"
-                android:layout_height="216dp"
-                app:srcCompat="@drawable/hu" />
 
             <Button
                 android:id="@+id/buttonHU"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="190dp"
+                android:background="@drawable/hu"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/jugarhu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#FFD600"
                 android:text="JUGAR"
                 android:textColor="@android:color/white"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -65,20 +66,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/imageView18"
-                android:layout_width="match_parent"
-                android:layout_height="182dp"
-                app:srcCompat="@drawable/trivia" />
-
             <Button
                 android:id="@+id/buttonTV"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="182dp"
+                android:background="@drawable/trivia"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/jugartv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#D50000"
                 android:text="JUGAR"
                 android:textColor="@android:color/white"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -86,20 +90,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/imageView26"
-                android:layout_width="match_parent"
-                android:layout_height="183dp"
-                app:srcCompat="@drawable/flappygame" />
-
             <Button
                 android:id="@+id/buttonFV"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="#58C215"
-                android:text="JUGAR"
+                android:layout_height="182dp"
+                android:background="@drawable/flappygame"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/jugarfv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00C853"
+                android:text="JUGAR"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -111,5 +118,16 @@
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/ayuda"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ayuda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
