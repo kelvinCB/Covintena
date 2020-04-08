@@ -40,8 +40,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato1Activity.class);
                 startActivity(intent);
             }
@@ -50,8 +50,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato2Activity.class);
                 startActivity(intent);
             }
@@ -60,8 +60,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato3Activity.class);
                 startActivity(intent);
             }
@@ -70,8 +70,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato4Activity.class);
                 startActivity(intent);
             }
@@ -80,8 +80,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato5Activityy.class);
                 startActivity(intent);
             }
@@ -90,8 +90,8 @@ public class InfoActivity extends AppCompatActivity {
         btnDato6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, Dato6Activity.class);
                 startActivity(intent);
             }
@@ -100,8 +100,8 @@ public class InfoActivity extends AppCompatActivity {
         btnAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(InfoActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(InfoActivity.this, AudiosActivity.class);
                 startActivity(intent);
             }

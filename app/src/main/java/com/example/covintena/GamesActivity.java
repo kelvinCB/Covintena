@@ -39,8 +39,8 @@ public class GamesActivity extends AppCompatActivity {
         btnHU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, HeadsUpActivity.class);
                 startActivity(intent);
             }
@@ -49,8 +49,8 @@ public class GamesActivity extends AppCompatActivity {
         btnTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, TriviaActivity.class);
                 startActivity(intent);
             }
@@ -59,8 +59,8 @@ public class GamesActivity extends AppCompatActivity {
         btnFV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
             }
@@ -69,8 +69,8 @@ public class GamesActivity extends AppCompatActivity {
         btnjugarhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, HeadsUpActivity.class);
                 startActivity(intent);
             }
@@ -79,8 +79,8 @@ public class GamesActivity extends AppCompatActivity {
         btnjugartv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, TriviaActivity.class);
                 startActivity(intent);
             }
@@ -89,11 +89,11 @@ public class GamesActivity extends AppCompatActivity {
         btnjugarfv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity.class);
-                startActivity(intent);
-                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.flappyvirus1);
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
                 sb.start();
-              //  sb.setLooping(true);
+                Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity
+                        .class);
+                startActivity(intent);
             }
         });
 
@@ -101,8 +101,8 @@ public class GamesActivity extends AppCompatActivity {
         btnayuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
-                //sb.start();
+                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.sonidoboton);
+                sb.start();
                 Intent intent = new Intent(GamesActivity.this, InstruccionesActitvity.class);
                 startActivity(intent);
             }

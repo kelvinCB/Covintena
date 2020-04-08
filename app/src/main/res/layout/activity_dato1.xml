@@ -13,7 +13,7 @@
         android:layout_height="78dp"
         android:background="#7602B1"
         android:gravity="center|center_vertical"
-        android:text="¿Qué es el Coronavirus? "
+        android:text="¿QUÉ ES EL CORONAVIRUS?"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

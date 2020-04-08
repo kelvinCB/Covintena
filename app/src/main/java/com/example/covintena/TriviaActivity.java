@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.camera2.params.ColorSpaceTransform;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -227,10 +228,14 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void correctSound(){
         //Sonido cuando es correcto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
+        mediaPlayer.start();
     }
 
     private void incorrectSound(){
         //Sonido cuando es incorrecto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+        mediaPlayer.start();
     }
 
     @Override

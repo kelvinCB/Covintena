@@ -13,7 +13,7 @@
         android:layout_height="90dp"
         android:background="#04A833"
         android:gravity="center|center_vertical"
-        android:text="  Medidas de salubridad generales"
+        android:text="MEDIDAS DE SALUBRIDAD GENERALES"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

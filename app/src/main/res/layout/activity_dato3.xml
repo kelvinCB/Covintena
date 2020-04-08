@@ -13,7 +13,7 @@
         android:layout_height="78dp"
         android:background="#0195A7"
         android:gravity="center|center_vertical"
-        android:text="Origen del COVID-19"
+        android:text="ORIGEN DEL COVID - 19"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

@@ -13,7 +13,7 @@
         android:layout_height="78dp"
         android:background="#C00046"
         android:gravity="center|center_vertical"
-        android:text="Tips de Protección"
+        android:text="TIPS DE PROTECCIÓN"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
