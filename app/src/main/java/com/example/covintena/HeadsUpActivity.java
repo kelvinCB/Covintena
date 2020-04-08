@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
@@ -151,7 +152,8 @@ public class HeadsUpActivity extends AppCompatActivity {
                     //Reinicio de variables
                     if (!aux && z < 2 && z > -2) {
                         i++;
-
+                        //Poner fondo de pantalla normal
+                        //
                         if (i < preguntaList.size()) {
                             tvPregunta.setText(preguntaList.get(i).getPregunta());
                             for (int j = 0; j < 4; j++) {
@@ -188,10 +190,16 @@ public class HeadsUpActivity extends AppCompatActivity {
 
     private void correctSound(){
         //Sonido cuando es correcto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
+        mediaPlayer.start();
+
     }
 
     private void incorrectSound(){
         //Sonido cuando es incorrecto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+        mediaPlayer.start();
+
     }
 
     @Override
