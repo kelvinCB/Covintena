@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/negrogris"
     tools:context=".GamesActivity">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="360dp"
         android:layout_height="61dp"
-        android:background="#00BFA5"
+        android:background="#6200EA"
         android:gravity="center_vertical"
         android:text="  Juegos"
         android:textColor="@android:color/white"
@@ -25,6 +25,7 @@
         android:id="@+id/scrollView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/negrogris"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -78,12 +79,18 @@
                 android:text="JUGAR"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView68"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="match_parent"
+                android:layout_height="183dp"
+                app:srcCompat="@drawable/flappygame" />
 
             <Button
                 android:id="@+id/buttonFV"
@@ -93,7 +100,7 @@
                 android:text="JUGAR"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView28"
