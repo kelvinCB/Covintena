@@ -37,6 +37,7 @@ public class HeadsUpActivity extends AppCompatActivity {
     SensorEventListener sensorEventListener;
     private Boolean aux=true;
     private int correctas = 0, incorrectas = 0;
+    private Boolean crono = false;
 
 
     @Override
@@ -105,6 +106,7 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
     private void menu(){
+        crono = false;
         stopSensor();
         Intent intent = new Intent(HeadsUpActivity.this,
                 GameOverHeadsUpActivity.class);
@@ -114,6 +116,7 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
     private void activateSensor(final List<Pregunta> preguntaList) {
+        crono = true;
         if (preguntaList != null) {
             //Randomizar el listado de palabras
             Collections.shuffle(preguntaList, new Random());
@@ -137,17 +140,18 @@ public class HeadsUpActivity extends AppCompatActivity {
                     if (z < -5 && aux) {
                         aux = false;
                         correctas++;
-                        //correctSound();
+                        correctSound();
                     }
                     //Evento que se desata al mover el celular hacia arriba
                     if (z > 5 && aux) {
                         aux = false;
                         incorrectas++;
-                        //incorrectSound();
+                        incorrectSound();
                     }
                     //Reinicio de variables
                     if (!aux && z < 2 && z > -2) {
                         i++;
+
                         if (i < preguntaList.size()) {
                             tvPregunta.setText(preguntaList.get(i).getPregunta());
                             for (int j = 0; j < 4; j++) {
@@ -182,5 +186,19 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
 
+    private void correctSound(){
+        //Sonido cuando es correcto
+    }
 
+    private void incorrectSound(){
+        //Sonido cuando es incorrecto
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (crono){
+            countDownTimer.cancel();
+        }
+    }
 }

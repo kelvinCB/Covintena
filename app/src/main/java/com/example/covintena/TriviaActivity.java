@@ -33,6 +33,7 @@ public class TriviaActivity extends AppCompatActivity {
     Button btnResp4;
     CountDownTimer countDownTimer;
     private int correctas = 0, incorrectas = 0, indexPregunta = 0;
+    private Boolean crono = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,8 @@ public class TriviaActivity extends AppCompatActivity {
     }
 
     private void juega(final List<Pregunta> preguntaList, final int index){
+        crono = true;
+
         tvPregunta.setText(preguntaList.get(index).getPregunta());
         btnResp1.setText(preguntaList.get(index).getRespuesta().get(0).getTexto());
         btnResp1.setBackgroundColor(Color.LTGRAY);
@@ -105,9 +108,11 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (preguntaList.get(index).getRespuesta().get(0).getValor()) {
                     correctas++;
+                    correctSound();
                     btnResp1.setBackgroundColor(Color.GREEN);
                 } else {
                     incorrectas++;
+                    incorrectSound();
                     btnResp1.setBackgroundColor(Color.RED);
                 }
                 indexPregunta++;
@@ -132,9 +137,11 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (preguntaList.get(index).getRespuesta().get(1).getValor()) {
                     correctas++;
+                    correctSound();
                     btnResp2.setBackgroundColor(Color.GREEN);
                 } else {
                     incorrectas++;
+                    incorrectSound();
                     btnResp2.setBackgroundColor(Color.RED);
                 }
                 indexPregunta++;
@@ -158,9 +165,11 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (preguntaList.get(index).getRespuesta().get(2).getValor()) {
                     correctas++;
+                    correctSound();
                     btnResp3.setBackgroundColor(Color.GREEN);
                 } else {
                     incorrectas++;
+                    incorrectSound();
                     btnResp3.setBackgroundColor(Color.RED);
                 }
                 indexPregunta++;
@@ -184,9 +193,11 @@ public class TriviaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (preguntaList.get(index).getRespuesta().get(3).getValor()) {
                     correctas++;
+                    correctSound();
                     btnResp4.setBackgroundColor(Color.GREEN);
                 } else {
                     incorrectas++;
+                    incorrectSound();
                     btnResp4.setBackgroundColor(Color.RED);
                 }
                 indexPregunta++;
@@ -206,6 +217,7 @@ public class TriviaActivity extends AppCompatActivity {
     }
 
     private void menu(){
+        crono=false;
         Intent intent = new Intent(TriviaActivity.this,
                 GameOverTriviaActivity.class);
         intent.putExtra("correctas", correctas);
@@ -213,4 +225,19 @@ public class TriviaActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void correctSound(){
+        //Sonido cuando es correcto
+    }
+
+    private void incorrectSound(){
+        //Sonido cuando es incorrecto
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(crono){
+            countDownTimer.cancel();
+        }
+    }
 }
