@@ -77,10 +77,13 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         @Override
         public void run() {
             Intent intent = new Intent(ContenedorFlappyActivity.this, GameOverActivity.class);
+            intent.putExtra("score", FlappyVirusActivity.totalScore());
             startActivity(intent);
+
             finish();
-            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.coronado1);
+            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.coronado2);
             sb.start();
+
         }
     }, 2000);
 

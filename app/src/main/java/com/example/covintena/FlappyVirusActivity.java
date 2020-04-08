@@ -80,11 +80,12 @@ public class FlappyVirusActivity extends View {
 
     // Score
     private Paint scorePaint = new Paint();
-    private int score;
+    private static int score;
+    public static int total_score;
 
     // Level
     private Paint levelPaint = new Paint();
-    private  int level = 1;
+    private static  int level = 1;
 
     // Life
     private Bitmap life[] = new Bitmap[2];
@@ -379,6 +380,14 @@ public class FlappyVirusActivity extends View {
             virusLeftSpeed1 = 35;
             rayaLeftSpeed1 = 35;
         }
+        }
+
+        public static int totalScore(){
+
+        total_score = ((level*300) + score)-300;
+
+        return  total_score;
+
         }
 
 }
