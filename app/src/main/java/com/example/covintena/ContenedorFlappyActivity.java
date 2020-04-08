@@ -1,6 +1,7 @@
 package com.example.covintena;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -17,7 +18,8 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
     private final static long TIMER_INTERVAL = 30;
     public static boolean cambio = false;
     private static boolean aux;
-
+    public static boolean sonidoTos = false;
+    private static boolean auxSonidoTos;
 
 
     @Override
@@ -39,6 +41,12 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
 
                         flappyVirusActivity.invalidate();
                         aux = FlappyVirusActivity.cambiar;
+                        auxSonidoTos = FlappyVirusActivity.sonidoTos;
+                        if(auxSonidoTos == true){
+                            FlappyVirusActivity.sonidoTos = false;
+                            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.tos);
+                            sb.start();
+                        }
                         System.out.println("El valor de la variable auxiliar es: "+aux);
                         if(aux==true) {
                             llamarGameOver();
