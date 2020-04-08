@@ -13,9 +13,11 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
 
 
     private FlappyVirusActivity flappyVirusActivity;
-    private GameOverActivity gameOverActivity;
     private Handler handler = new Handler();
     private final static long TIMER_INTERVAL = 30;
+    public static boolean cambio = false;
+    private static boolean aux;
+
 
 
     @Override
@@ -23,24 +25,44 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_game_over);
         flappyVirusActivity = new FlappyVirusActivity(this);
-        gameOverActivity = new GameOverActivity();
 
         setContentView(flappyVirusActivity);
 
         // Start the timer.
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+
                         flappyVirusActivity.invalidate();
+                        aux = FlappyVirusActivity.cambiar;
+                        System.out.println("El valor de la variable auxiliar es: "+aux);
+                        if(aux==true) {
+                            llamarGameOver();
+                            timer.cancel();
+                        }
                     }
                 });
 
             }
         }, 0, TIMER_INTERVAL);
+
+
+}
+
+    public void llamarGameOver(){
+    new Handler().postDelayed(new Runnable() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(ContenedorFlappyActivity.this, GameOverActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+    }, 500);
 
     }
 

@@ -28,6 +28,7 @@
         <activity android:name=".Dato1Activity" />
         <activity android:name=".RecomendacionesActivity" />
         <activity android:name=".SubCategoriaActivity" />
+        <activity android:name=".GameOverActivity" />
         <activity android:name=".VagModeActivity" /> <!-- <activity android:name=".FlappyVirusActivity" /> -->
         <activity android:name=".TriviaActivity" />
         <activity android:name=".HeadsUpActivity" />

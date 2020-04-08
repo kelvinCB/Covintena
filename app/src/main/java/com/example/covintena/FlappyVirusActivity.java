@@ -48,12 +48,12 @@ public class FlappyVirusActivity extends View {
     //Position and speed of Virus Bitmap
     private int virusLeftX;
     private int virusLeftY;
-    private int virusLeftSpeed = 20;
+    private int virusLeftSpeed = 10;
 
     //Position and speed of Virus Bitmap
     private int virusLeftX1;
     private int virusLeftY1;
-    private int virusLeftSpeed1 = 25;
+    private int virusLeftSpeed1 = 15;
 
     //Position and speed of raya1 Bitmap
     private int rayaLeftX1;
@@ -93,7 +93,7 @@ public class FlappyVirusActivity extends View {
     private boolean touch_flg = false;
 
     //Change Activity
-    boolean cambiar = false;
+    public static boolean  cambiar = false;
 
     public FlappyVirusActivity(Context context) {
         super(context);
@@ -187,7 +187,7 @@ public class FlappyVirusActivity extends View {
         rayaLeftX1 -= rayaLeftSpeed1;
 
         //Cuando la raya llega al final de la pantalla
-        if (rayaLeftX1 < 0) {
+        if (rayaLeftX1 < -500) {
             rayaLeftX1 = canvasWidth + 20;
             rayaLeftY1 = 2050;
         }
@@ -201,7 +201,7 @@ public class FlappyVirusActivity extends View {
         nubeLeftX0 -= nubeLeftSpeed0;
 
         //Cuando la nube0 llega al final de la pantalla
-        if (nubeLeftX0 < 0) {
+        if (nubeLeftX0 < -400) {
             nubeLeftX0 = canvasWidth + 20;
             nubeLeftY0 = 100;
         }
@@ -226,7 +226,7 @@ public class FlappyVirusActivity extends View {
 
         // Jabon1 toca muchacho
         jabonLeftX1 -= jabonLeftSpeed1;
-        if (hitCheck(jabonLeftX, jabonLeftY)) {
+        if (hitCheck(jabonLeftX1, jabonLeftY1)) {
             score += 10;
             jabonLeftX1 = -100;
         }
@@ -244,9 +244,13 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(virusLeftX, virusLeftY)) {
             virusLeftX = -100;
             life_count--;
-            if (life_count == 0) {//Cuando no quedan vidas
+            System.out.println("La vida está en: "+life_count);
+            System.out.println("El valor de cambiar es: "+cambiar);
+            if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-
+                System.out.println("La vida está en: "+life_count);
+                ContenedorFlappyActivity.cambio = true;
+                cambiar = ContenedorFlappyActivity.cambio;
 
             }
         }
@@ -264,15 +268,17 @@ public class FlappyVirusActivity extends View {
         if (hitCheck(virusLeftX1, virusLeftY1)) {
             virusLeftX1 = -100;
             life_count--;
-            if (life_count == 0) {//Cuando no quedan vidas
+            System.out.println("La vida está en: "+life_count);
+            if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                cambiar = true;
-
+                System.out.println("La vida está en: "+life_count);
+                ContenedorFlappyActivity.cambio = true;
+                cambiar = ContenedorFlappyActivity.cambio;
             }
         }
 
         // Cuando no hay virus1 genera uno
-        if (virusLeftX1 < 0) { // 0 es la posicion en x que hace desaparecer la imagen
+        if (virusLeftX1 <= 0) { // 0 es la posicion en x que hace desaparecer la imagen
             virusLeftX1 = canvasWidth + 200;
             virusLeftY1 = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
         }
@@ -316,6 +322,11 @@ public class FlappyVirusActivity extends View {
         return true;
     }
 
+    public static boolean cambiarAGameOver (){
+    return cambiar;
+
+    }
+
     public void ponerImagen (){
 
         if(score>=0 && score<50){
@@ -338,7 +349,7 @@ public class FlappyVirusActivity extends View {
           fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
         }else{
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
-            System.out.println("No encuentro la foto");
+            System.out.println("No encuentro la foto de fondo");
         }
 
         }
