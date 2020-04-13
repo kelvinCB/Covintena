@@ -118,6 +118,7 @@ public class FlappyVirusActivity extends View {
     //    raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
         raya_calle[1] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
+
         // Imagen de las nubes
         nube[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
         nube[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
@@ -368,17 +369,17 @@ public class FlappyVirusActivity extends View {
 
         public void cambiarVelocidadJuego(int level){
         if(level == 2) {
-            jabonLeftSpeed = 20;
-            jabonLeftSpeed1 = 25;
-            virusLeftSpeed = 20;
-            virusLeftSpeed1 = 25;
-            rayaLeftSpeed1 = 25;
+            jabonLeftSpeed = 15;
+            jabonLeftSpeed1 = 20;
+            virusLeftSpeed = 15;
+            virusLeftSpeed1 = 20;
+            rayaLeftSpeed1 = 20;
         }else if(level == 3){
-            jabonLeftSpeed = 30;
-            jabonLeftSpeed1 = 35;
-            virusLeftSpeed = 30;
-            virusLeftSpeed1 = 35;
-            rayaLeftSpeed1 = 35;
+            jabonLeftSpeed = 25;
+            jabonLeftSpeed1 = 30;
+            virusLeftSpeed = 25;
+            virusLeftSpeed1 = 30;
+            rayaLeftSpeed1 = 30;
         }
         }
 
