@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.example.covintena.interfaces.preguntasApi;
 import com.example.covintena.model.Pregunta;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -56,6 +55,7 @@ public class TriviaActivity extends AppCompatActivity {
         btnResp3.setVisibility(View.INVISIBLE);
         btnResp4.setVisibility(View.INVISIBLE);
 
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api-hackathon.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -85,6 +85,7 @@ public class TriviaActivity extends AppCompatActivity {
                         btnResp2.setVisibility(View.VISIBLE);
                         btnResp3.setVisibility(View.VISIBLE);
                         btnResp4.setVisibility(View.VISIBLE);
+
                         countDownTimer = new CountDownTimer(60000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
@@ -97,7 +98,7 @@ public class TriviaActivity extends AppCompatActivity {
                                 menu();
                             }
                         }.start();
-                        Collections.shuffle(preguntaList, new Random());
+                        //Collections.shuffle(preguntaList, new Random());
                         juega(preguntaList, 0);
                     }
                 }.start();

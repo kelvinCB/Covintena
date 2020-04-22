@@ -57,7 +57,7 @@
         <activity android:name=".VagModeActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".TriviaActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
         <activity android:name=".HeadsUpActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".GamesActivity" />
