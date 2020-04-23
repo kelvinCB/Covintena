@@ -4,45 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/negrogris"
+    android:background="@drawable/fondo_hu2"
     tools:context=".HeadsUpActivity">
 
     <TextView
-        android:id="@+id/tvPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:textColor="@color/blanco"
-        android:textSize="24sp"
+        android:id="@+id/fondo"
+        android:layout_width="582dp"
+        android:layout_height="315dp"
+        android:background="#40FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvRespuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="414dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="CARGANDO"
-        android:textColor="@color/blanco"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvPregunta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCronometro"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintEnd_toEndOf="@+id/fondo"
+        app:layout_constraintStart_toStartOf="@+id/fondo"
+        app:layout_constraintTop_toBottomOf="@+id/tvPregunta" />
 
     <TextView
         android:id="@+id/tvCronometro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_width="92dp"
+        android:layout_height="53dp"
+        android:gravity="center"
         android:textColor="@color/blanco"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/fondo"
+        app:layout_constraintEnd_toEndOf="@+id/fondo"
+        app:layout_constraintStart_toStartOf="@+id/fondo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRespuesta"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <TextView
+        android:id="@+id/tvPregunta"
+        android:layout_width="472dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/fondo"
+        app:layout_constraintStart_toStartOf="@+id/fondo"
+        app:layout_constraintTop_toTopOf="@+id/fondo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

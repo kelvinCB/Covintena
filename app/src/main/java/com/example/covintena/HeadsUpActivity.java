@@ -33,6 +33,7 @@ public class HeadsUpActivity extends AppCompatActivity {
     private TextView tvPregunta;
     private TextView tvRespuesta;
     private TextView tvCronometro;
+    private TextView tvFondo;
 
     CountDownTimer countDownTimer, countDownTimer1;
     SensorManager sensorManager;
@@ -60,6 +61,7 @@ public class HeadsUpActivity extends AppCompatActivity {
         tvPregunta = findViewById(R.id.tvPregunta);
         tvRespuesta = findViewById(R.id.tvRespuesta);
         tvCronometro = findViewById(R.id.tvCronometro);
+        tvFondo = findViewById(R.id.fondo);
 
         if (sensor == null){
             finish();
@@ -141,12 +143,14 @@ public class HeadsUpActivity extends AppCompatActivity {
                     float z = event.values[2];
                     //Evento que se desata al mover el celular hacia abajo
                     if (z < -5 && aux) {
+                        tvFondo.setBackgroundResource(R.color.verde);
                         aux = false;
                         correctas++;
                         correctSound();
                     }
                     //Evento que se desata al mover el celular hacia arriba
                     if (z > 5 && aux) {
+                        tvFondo.setBackgroundResource(R.color.rojo);
                         aux = false;
                         incorrectas++;
                         incorrectSound();
@@ -155,6 +159,8 @@ public class HeadsUpActivity extends AppCompatActivity {
                     if (!aux && z < 2 && z > -2) {
                         i++;
                         //Poner fondo de pantalla normal
+                        tvFondo.setBackgroundResource(R.color.blanco_t);
+
                         //
                         if (i < preguntaList.size()) {
                             tvPregunta.setText(preguntaList.get(i).getPregunta());

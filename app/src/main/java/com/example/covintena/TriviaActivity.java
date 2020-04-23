@@ -87,7 +87,7 @@ public class TriviaActivity extends AppCompatActivity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         tvPregunta.setText(String.format(Locale.getDefault(),
-                                "Prepárate!\n%d",
+                                "¡Prepárate!\n%d",
                                 millisUntilFinished / 1000L));
                         crono1=true;
                     }
@@ -132,7 +132,7 @@ public class TriviaActivity extends AppCompatActivity {
 
         tvPregunta.setText(preguntaList.get(index).getPregunta());
         btnResp1.setText(preguntaList.get(index).getRespuesta().get(0).getTexto());
-        btnResp1.setBackgroundColor(Color.LTGRAY);
+        btnResp1.setBackgroundResource(R.drawable.botonestrivia);
         btnResp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,7 +165,7 @@ public class TriviaActivity extends AppCompatActivity {
             }
         });
         btnResp2.setText(preguntaList.get(index).getRespuesta().get(1).getTexto());
-        btnResp2.setBackgroundColor(Color.LTGRAY);
+        btnResp2.setBackgroundResource(R.drawable.botonestrivia);
         btnResp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,7 +199,7 @@ public class TriviaActivity extends AppCompatActivity {
             }
         });
         btnResp3.setText(preguntaList.get(index).getRespuesta().get(2).getTexto());
-        btnResp3.setBackgroundColor(Color.LTGRAY);
+        btnResp3.setBackgroundResource(R.drawable.botonestrivia);
         btnResp3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -233,7 +233,7 @@ public class TriviaActivity extends AppCompatActivity {
             }
         });
         btnResp4.setText(preguntaList.get(index).getRespuesta().get(3).getTexto());
-        btnResp4.setBackgroundColor(Color.LTGRAY);
+        btnResp4.setBackgroundResource(R.drawable.botonestrivia);
         btnResp4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
