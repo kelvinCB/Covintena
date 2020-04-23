@@ -113,7 +113,7 @@ public class TriviaActivity extends AppCompatActivity {
                                 menu();
                             }
                         }.start();
-                        //Collections.shuffle(preguntaList, new Random());
+                        Collections.shuffle(preguntaList, new Random());
                         juega(preguntaList, 0);
                     }
                 }.start();
