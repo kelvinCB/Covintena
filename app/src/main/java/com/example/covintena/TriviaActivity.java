@@ -1,6 +1,8 @@
 package com.example.covintena;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.Lifecycle;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,14 +36,20 @@ public class TriviaActivity extends AppCompatActivity {
     Button btnResp2;
     Button btnResp3;
     Button btnResp4;
-    CountDownTimer countDownTimer;
-    private int correctas = 0, incorrectas = 0, indexPregunta = 0;
-    private Boolean crono = false;
+    CountDownTimer countDownTimer, countDownTimer1;
+    private int correctas, incorrectas, indexPregunta;
+    private Boolean crono, crono1, pressBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
+
+        pressBack = false;
+        crono = crono1 = false;
+        correctas=0;
+        incorrectas=0;
+        indexPregunta=0;
 
         tvPregunta = findViewById(R.id.tvPregunta);
         tvCronometro = findViewById(R.id.tvCronometro);
@@ -55,6 +63,10 @@ public class TriviaActivity extends AppCompatActivity {
         btnResp3.setVisibility(View.INVISIBLE);
         btnResp4.setVisibility(View.INVISIBLE);
 
+        btnResp1.setEnabled(true);
+        btnResp2.setEnabled(true);
+        btnResp3.setEnabled(true);
+        btnResp4.setEnabled(true);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api-hackathon.herokuapp.com/api/")
@@ -65,22 +77,24 @@ public class TriviaActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Pregunta>>() {
             @Override
             public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
-                if (!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     return;
                 }
 
                 final List<Pregunta> preguntaList = response.body();
-                CountDownTimer countDownTimer1 = new CountDownTimer(5000,
+                countDownTimer1 = new CountDownTimer(5000,
                         1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         tvPregunta.setText(String.format(Locale.getDefault(),
-                                "Prepárate!\n%d",
+                                "¡Prepárate!\n%d",
                                 millisUntilFinished / 1000L));
+                        crono1=true;
                     }
 
                     @Override
                     public void onFinish() {
+                        crono1=false;
                         btnResp1.setVisibility(View.VISIBLE);
                         btnResp2.setVisibility(View.VISIBLE);
                         btnResp3.setVisibility(View.VISIBLE);
@@ -91,6 +105,7 @@ public class TriviaActivity extends AppCompatActivity {
                             public void onTick(long millisUntilFinished) {
                                 tvCronometro.setText(String.format(Locale.getDefault(), "%d",
                                         millisUntilFinished / 1000));
+                                crono = true;
                             }
 
                             @Override
@@ -98,7 +113,7 @@ public class TriviaActivity extends AppCompatActivity {
                                 menu();
                             }
                         }.start();
-                        //Collections.shuffle(preguntaList, new Random());
+                        Collections.shuffle(preguntaList, new Random());
                         juega(preguntaList, 0);
                     }
                 }.start();
@@ -112,15 +127,18 @@ public class TriviaActivity extends AppCompatActivity {
 
     }
 
-    private void juega(final List<Pregunta> preguntaList, final int index){
+    private void juega(final List<Pregunta> preguntaList, final int index) {
         crono = true;
 
         tvPregunta.setText(preguntaList.get(index).getPregunta());
         btnResp1.setText(preguntaList.get(index).getRespuesta().get(0).getTexto());
-        btnResp1.setBackgroundColor(Color.LTGRAY);
+        btnResp1.setBackgroundResource(R.drawable.botonestrivia);
         btnResp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnResp2.setEnabled(false);
+                btnResp3.setEnabled(false);
+                btnResp4.setEnabled(false);
                 if (preguntaList.get(index).getRespuesta().get(0).getValor()) {
                     correctas++;
                     correctSound();
@@ -131,25 +149,29 @@ public class TriviaActivity extends AppCompatActivity {
                     btnResp1.setBackgroundColor(Color.RED);
                 }
                 indexPregunta++;
-                btnResp1.setBackgroundColor(Color.RED);
                 CountDownTimer count = new CountDownTimer(1000, 1000) {
                     @Override
                     public void onTick(long l) {
-
                     }
 
                     @Override
                     public void onFinish() {
+                        btnResp2.setEnabled(true);
+                        btnResp3.setEnabled(true);
+                        btnResp4.setEnabled(true);
                         juega(preguntaList, indexPregunta);
                     }
                 }.start();
             }
         });
         btnResp2.setText(preguntaList.get(index).getRespuesta().get(1).getTexto());
-        btnResp2.setBackgroundColor(Color.LTGRAY);
+        btnResp2.setBackgroundResource(R.drawable.botonestrivia);
         btnResp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnResp1.setEnabled(false);
+                btnResp3.setEnabled(false);
+                btnResp4.setEnabled(false);
                 if (preguntaList.get(index).getRespuesta().get(1).getValor()) {
                     correctas++;
                     correctSound();
@@ -168,16 +190,22 @@ public class TriviaActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
+                        btnResp1.setEnabled(true);
+                        btnResp3.setEnabled(true);
+                        btnResp4.setEnabled(true);
                         juega(preguntaList, indexPregunta);
                     }
                 }.start();
             }
         });
         btnResp3.setText(preguntaList.get(index).getRespuesta().get(2).getTexto());
-        btnResp3.setBackgroundColor(Color.LTGRAY);
+        btnResp3.setBackgroundResource(R.drawable.botonestrivia);
         btnResp3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnResp1.setEnabled(false);
+                btnResp2.setEnabled(false);
+                btnResp4.setEnabled(false);
                 if (preguntaList.get(index).getRespuesta().get(2).getValor()) {
                     correctas++;
                     correctSound();
@@ -196,16 +224,22 @@ public class TriviaActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
+                        btnResp1.setEnabled(true);
+                        btnResp2.setEnabled(true);
+                        btnResp4.setEnabled(true);
                         juega(preguntaList, indexPregunta);
                     }
                 }.start();
             }
         });
         btnResp4.setText(preguntaList.get(index).getRespuesta().get(3).getTexto());
-        btnResp4.setBackgroundColor(Color.LTGRAY);
+        btnResp4.setBackgroundResource(R.drawable.botonestrivia);
         btnResp4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnResp1.setEnabled(false);
+                btnResp2.setEnabled(false);
+                btnResp3.setEnabled(false);
                 if (preguntaList.get(index).getRespuesta().get(3).getValor()) {
                     correctas++;
                     correctSound();
@@ -224,6 +258,9 @@ public class TriviaActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
+                        btnResp1.setEnabled(true);
+                        btnResp2.setEnabled(true);
+                        btnResp3.setEnabled(true);
                         juega(preguntaList, indexPregunta);
                     }
                 }.start();
@@ -231,22 +268,23 @@ public class TriviaActivity extends AppCompatActivity {
         });
     }
 
-    private void menu(){
-        crono=false;
+    private void menu() {
+        crono = false;
         Intent intent = new Intent(TriviaActivity.this,
                 GameOverTriviaActivity.class);
         intent.putExtra("correctas", correctas);
         intent.putExtra("incorrectas", incorrectas);
         startActivity(intent);
+        finish();
     }
 
-    private void correctSound(){
+    private void correctSound() {
         //Sonido cuando es correcto
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
         mediaPlayer.start();
     }
 
-    private void incorrectSound(){
+    private void incorrectSound() {
         //Sonido cuando es incorrecto
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
         mediaPlayer.start();
@@ -255,8 +293,33 @@ public class TriviaActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(crono){
+        if (crono1){
+            countDownTimer1.cancel();
+        }
+        if (crono) {
             countDownTimer.cancel();
         }
+        if (!pressBack){
+            finish();
+        }
+    }
+
+    /*
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void initializeCrono() {
+        Intent intent = new Intent(TriviaActivity.this,
+                GamesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    */
+
+    @Override
+    public void onBackPressed() {
+        pressBack=true;
+        Intent intent = new Intent(TriviaActivity.this,
+                GamesActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

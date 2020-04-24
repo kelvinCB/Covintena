@@ -41,6 +41,7 @@ public class GameOverTriviaActivity extends AppCompatActivity {
                 sb.start();
                 Intent intent = new Intent(GameOverTriviaActivity.this, TriviaActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -51,11 +52,16 @@ public class GameOverTriviaActivity extends AppCompatActivity {
                 sb.start();
                 Intent intent = new Intent(GameOverTriviaActivity.this, GamesActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
-
-
-
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GameOverTriviaActivity.this,
+                GamesActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

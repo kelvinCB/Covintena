@@ -1,6 +1,8 @@
 package com.example.covintena;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -31,14 +33,15 @@ public class HeadsUpActivity extends AppCompatActivity {
     private TextView tvPregunta;
     private TextView tvRespuesta;
     private TextView tvCronometro;
+    private TextView tvFondo;
 
-    CountDownTimer countDownTimer;
+    CountDownTimer countDownTimer, countDownTimer1;
     SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
-    private Boolean aux=true;
-    private int correctas = 0, incorrectas = 0;
-    private Boolean crono = false;
+    private Boolean aux;
+    private int correctas, incorrectas;
+    private Boolean crono, crono1, pressBack, sensorStop, sensorStart;
 
 
     @Override
@@ -46,11 +49,19 @@ public class HeadsUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heads_up);
 
+        crono = crono1 = false;
+        pressBack=false;
+        sensorStop= sensorStart = false;
+        correctas=0;
+        incorrectas=0;
+        aux=true;
+
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         tvPregunta = findViewById(R.id.tvPregunta);
         tvRespuesta = findViewById(R.id.tvRespuesta);
         tvCronometro = findViewById(R.id.tvCronometro);
+        tvFondo = findViewById(R.id.fondo);
 
         if (sensor == null){
             finish();
@@ -70,22 +81,25 @@ public class HeadsUpActivity extends AppCompatActivity {
                 }
 
                 final List<Pregunta> preguntaList = response.body();
-                CountDownTimer countDownTimer1 = new CountDownTimer(5000,
+                countDownTimer1 = new CountDownTimer(5000,
                         1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         tvPregunta.setText(String.format(Locale.getDefault(),
                                 "Póntelo en la frente \n%d",
                                 millisUntilFinished / 1000L));
+                        crono1=true;
                     }
 
                     @Override
                     public void onFinish() {
+                        crono1=false;
                         countDownTimer = new CountDownTimer(60000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 tvCronometro.setText(String.format(Locale.getDefault(), "%d",
                                         millisUntilFinished / 1000));
+                                crono=true;
                             }
 
                             @Override
@@ -104,16 +118,6 @@ public class HeadsUpActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void menu(){
-        crono = false;
-        stopSensor();
-        Intent intent = new Intent(HeadsUpActivity.this,
-                GameOverHeadsUpActivity.class);
-        intent.putExtra("correctas", correctas);
-        intent.putExtra("incorrectas", incorrectas);
-        startActivity(intent);
     }
 
     private void activateSensor(final List<Pregunta> preguntaList) {
@@ -139,12 +143,14 @@ public class HeadsUpActivity extends AppCompatActivity {
                     float z = event.values[2];
                     //Evento que se desata al mover el celular hacia abajo
                     if (z < -5 && aux) {
+                        tvFondo.setBackgroundResource(R.color.verde);
                         aux = false;
                         correctas++;
                         correctSound();
                     }
                     //Evento que se desata al mover el celular hacia arriba
                     if (z > 5 && aux) {
+                        tvFondo.setBackgroundResource(R.color.rojo);
                         aux = false;
                         incorrectas++;
                         incorrectSound();
@@ -153,6 +159,8 @@ public class HeadsUpActivity extends AppCompatActivity {
                     if (!aux && z < 2 && z > -2) {
                         i++;
                         //Poner fondo de pantalla normal
+                        tvFondo.setBackgroundResource(R.color.blanco_t);
+
                         //
                         if (i < preguntaList.size()) {
                             tvPregunta.setText(preguntaList.get(i).getPregunta());
@@ -178,12 +186,27 @@ public class HeadsUpActivity extends AppCompatActivity {
         }
     }
 
+    private void menu(){
+        crono = false;
+        stopSensor();
+        Intent intent = new Intent(HeadsUpActivity.this,
+                GameOverHeadsUpActivity.class);
+        intent.putExtra("correctas", correctas);
+        intent.putExtra("incorrectas", incorrectas);
+        startActivity(intent);
+        finish();
+    }
+
     private void startSensor() {
+        sensorStop=false;
+        sensorStart=true;
         sensorManager.registerListener(sensorEventListener, sensor,
                 SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private void stopSensor() {
+        sensorStop=true;
+        sensorStart=false;
         sensorManager.unregisterListener(sensorEventListener);
     }
 
@@ -205,12 +228,36 @@ public class HeadsUpActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        if (crono1){
+            countDownTimer1.cancel();
+        }
         if (crono){
             countDownTimer.cancel();
         }
+        if(!sensorStop && sensorStart){
+            stopSensor();
+        }
+        if (!pressBack){
+            finish();
+        }
+    }
 
-        stopSensor();
+    /*
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void initializeCrono() {
+        Intent intent = new Intent(HeadsUpActivity.this,
+                GamesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    */
 
-
+    @Override
+    public void onBackPressed() {
+        pressBack=true;
+        Intent intent = new Intent(HeadsUpActivity.this,
+                GamesActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

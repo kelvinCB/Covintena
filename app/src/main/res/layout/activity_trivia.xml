@@ -4,69 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/negrogris"
+    android:background="#02A4B6"
     tools:context=".TriviaActivity">
 
     <TextView
-        android:id="@+id/tvPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:gravity="center"
-        android:text="CARGANDO"
-        android:textColor="@color/blanco"
-        android:textSize="18sp"
+        android:id="@+id/textView95"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:background="#E74242"
+        android:gravity="center_vertical"
+        android:text="   TRIVIA"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnResp1"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="32dp"
-        android:text="Button"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPregunta" />
-
-    <Button
-        android:id="@+id/btnResp2"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
+        android:background="#FBC02D"
         android:text="Button"
+        android:textColor="@color/blanco"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnResp1" />
+        app:layout_constraintTop_toBottomOf="@+id/textView99" />
 
     <Button
         android:id="@+id/btnResp3"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/botonestrivia"
         android:text="Button"
+        android:textColor="@color/blanco"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnResp2" />
 
     <Button
-        android:id="@+id/btnResp4"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/btnResp2"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botonestrivia"
         android:text="Button"
+        android:textColor="@color/blanco"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnResp1" />
+
+    <Button
+        android:id="@+id/btnResp4"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botonestrivia"
+        android:text="Button"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnResp3" />
 
@@ -74,12 +86,39 @@
         android:id="@+id/tvCronometro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:text="0"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:textColor="@color/blanco"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView99"
+        android:layout_width="332dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/preguntatrivia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView95" />
+
+    <TextView
+        android:id="@+id/tvPregunta"
+        android:layout_width="305dp"
+        android:layout_height="169dp"
+        android:background="@color/blanco"
+        android:gravity="center"
+        android:text="CARGANDO"
+        android:textColor="@color/negrogris"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView99"
+        app:layout_constraintEnd_toEndOf="@+id/textView99"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@+id/textView99"
+        app:layout_constraintTop_toTopOf="@+id/textView99"
+        app:layout_constraintVertical_bias="0.482" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
