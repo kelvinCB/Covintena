@@ -186,7 +186,7 @@ public class FlappyVirusActivity extends View {
 
         //posicion de la raya de la calle0
       //  scaledrayacalle = Bitmap.createScaledBitmap(raya_calle[0],canvasWidth/3,60,false);
-        canvas.drawBitmap(raya_calle[0], rayaLeftX1, rayaLeftY1, null);
+        canvas.drawBitmap(raya_calle[0 ], rayaLeftX1, rayaLeftY1, null);
 
 
         //Animacion de la nube
