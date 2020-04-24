@@ -79,7 +79,22 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/textView92"
         app:layout_constraintTop_toBottomOf="@+id/textView96"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.302" />
+
+    <Button
+        android:id="@+id/VolverJugar"
+        android:layout_width="270dp"
+        android:layout_height="55dp"
+        android:background="@color/blanco"
+        android:text="Volver a Jugar"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView92"
+        app:layout_constraintEnd_toEndOf="@+id/textView92"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/textView92"
+        app:layout_constraintTop_toBottomOf="@+id/textView96"
+        app:layout_constraintVertical_bias="0.842" />
 
     <ImageView
         android:id="@+id/imageView26"

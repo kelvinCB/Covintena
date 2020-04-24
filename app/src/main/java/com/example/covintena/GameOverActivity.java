@@ -22,16 +22,16 @@ public class GameOverActivity extends AppCompatActivity {
 
         //Botones
         btnsalir = findViewById(R.id.Salir);
-    //    btnvj = findViewById(R.id.VolverJugar);
+        btnvj = findViewById(R.id.VolverJugar);
 
         //TextViews
         textViewResultados = findViewById(R.id.textViewResultados);
 
-        int score = getIntent().getExtras().getInt("score");
+       int score = getIntent().getExtras().getInt("score");
 
-        textViewResultados.setText(String.valueOf(score));
+       textViewResultados.setText(String.valueOf(score));
 
-       /* btnvj.setOnClickListener(new View.OnClickListener() {
+        btnvj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MediaPlayer sb = MediaPlayer.create(GameOverActivity.this, R.raw.sonidoboton);
@@ -39,7 +39,7 @@ public class GameOverActivity extends AppCompatActivity {
                 Intent intent = new Intent(GameOverActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         btnsalir.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -260,8 +260,7 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                ContenedorFlappyActivity.cambio = true;
-                cambiar = ContenedorFlappyActivity.cambio;
+                llamarGameOver();
 
             }
         }
@@ -283,9 +282,8 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-          //      System.out.println("La vida está en: "+life_count);
-                ContenedorFlappyActivity.cambio = true;
-                cambiar = ContenedorFlappyActivity.cambio;
+                llamarGameOver();
+
             }
         }
 
@@ -388,6 +386,17 @@ public class FlappyVirusActivity extends View {
         total_score = ((level*300) + score)-300;
 
         return  total_score;
+
+        }
+
+        private  void  llamarGameOver(){
+
+            Intent gameOverIntent = new Intent(getContext(),GameOverActivity.class);
+            gameOverIntent.putExtra("score", FlappyVirusActivity.totalScore());
+            gameOverIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getContext().startActivity(gameOverIntent);
+            MediaPlayer sb = MediaPlayer.create(getContext(), R.raw.coronado2);
+            sb.start();
 
         }
 
