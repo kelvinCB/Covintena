@@ -32,7 +32,6 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         flappyVirusActivity = new FlappyVirusActivity(this);
 
         setContentView(flappyVirusActivity);
-
        startTimer();
 
 }
