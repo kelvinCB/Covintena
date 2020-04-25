@@ -16,8 +16,6 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
     private FlappyVirusActivity flappyVirusActivity;
     private Handler handler = new Handler();
     private final static long TIMER_INTERVAL = 30;
-    public static boolean cambio = false;
-    private static boolean aux;
 
     //Sonidos
     public static boolean sonidoTos = false;
@@ -34,6 +32,11 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         flappyVirusActivity = new FlappyVirusActivity(this);
 
         setContentView(flappyVirusActivity);
+       startTimer();
+
+}
+
+    private void startTimer() {
 
         // Start the timer.
         final Timer timer = new Timer();
@@ -45,7 +48,6 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                     public void run() {
 
                         flappyVirusActivity.invalidate();
-                        aux = FlappyVirusActivity.cambiar;
                         auxSonidoTos = FlappyVirusActivity.sonidoTos;
                         auxSonidoPuntos = FlappyVirusActivity.sonidoPuntos;
                         if(auxSonidoPuntos == true){
@@ -58,11 +60,6 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                             MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.tos);
                             sb.start();
                         }
-                        System.out.println("El valor de la variable auxiliar es: "+aux);
-                        if(aux==true) {
-                            llamarGameOver();
-                            timer.cancel();
-                        }
                     }
                 });
 
@@ -70,24 +67,8 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
         }, 0, TIMER_INTERVAL);
 
 
-}
-
-    public void llamarGameOver(){
-    new Handler().postDelayed(new Runnable() {
-        @Override
-        public void run() {
-            Intent intent = new Intent(ContenedorFlappyActivity.this, GameOverActivity.class);
-            intent.putExtra("score", FlappyVirusActivity.totalScore());
-            startActivity(intent);
-
-            finish();
-            MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.coronado2);
-            sb.start();
-
-        }
-    }, 2000);
-
     }
+
 
 
 }
