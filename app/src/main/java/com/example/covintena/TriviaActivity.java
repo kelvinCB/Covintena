@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.covintena.interfaces.preguntasApi;
 import com.example.covintena.model.Pregunta;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -39,6 +40,7 @@ public class TriviaActivity extends AppCompatActivity {
     CountDownTimer countDownTimer, countDownTimer1;
     private int correctas, incorrectas, indexPregunta;
     private Boolean crono, crono1, pressBack;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,10 @@ public class TriviaActivity extends AppCompatActivity {
 
         pressBack = false;
         crono = crono1 = false;
-        correctas=0;
-        incorrectas=0;
-        indexPregunta=0;
+        correctas = 0;
+        incorrectas = 0;
+        indexPregunta = 0;
+        mediaPlayer = MediaPlayer.create(this, R.raw.correct);
 
         tvPregunta = findViewById(R.id.tvPregunta);
         tvCronometro = findViewById(R.id.tvCronometro);
@@ -89,12 +92,12 @@ public class TriviaActivity extends AppCompatActivity {
                         tvPregunta.setText(String.format(Locale.getDefault(),
                                 "¡Prepárate!\n%d",
                                 millisUntilFinished / 1000L));
-                        crono1=true;
+                        crono1 = true;
                     }
 
                     @Override
                     public void onFinish() {
-                        crono1=false;
+                        crono1 = false;
                         btnResp1.setVisibility(View.VISIBLE);
                         btnResp2.setVisibility(View.VISIBLE);
                         btnResp3.setVisibility(View.VISIBLE);
@@ -129,143 +132,154 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void juega(final List<Pregunta> preguntaList, final int index) {
         crono = true;
+        if (preguntaList.size() > index) {
+            tvPregunta.setText(preguntaList.get(index).getPregunta());
+            btnResp1.setText(preguntaList.get(index).getRespuesta().get(0).getTexto());
+            btnResp1.setBackgroundResource(R.drawable.botonestrivia);
+            btnResp1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnResp1.setEnabled(false);
+                    btnResp2.setEnabled(false);
+                    btnResp3.setEnabled(false);
+                    btnResp4.setEnabled(false);
+                    if (preguntaList.get(index).getRespuesta().get(0).getValor()) {
+                        correctas++;
+                        correctIncorrectSound(R.raw.correct);
+                        btnResp1.setBackgroundColor(Color.GREEN);
+                    } else {
+                        incorrectas++;
+                        correctIncorrectSound(R.raw.incorrect);
+                        btnResp1.setBackgroundColor(Color.RED);
+                    }
+                    indexPregunta++;
+                    CountDownTimer count = new CountDownTimer(1000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+                        }
 
-        tvPregunta.setText(preguntaList.get(index).getPregunta());
-        btnResp1.setText(preguntaList.get(index).getRespuesta().get(0).getTexto());
-        btnResp1.setBackgroundResource(R.drawable.botonestrivia);
-        btnResp1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnResp2.setEnabled(false);
-                btnResp3.setEnabled(false);
-                btnResp4.setEnabled(false);
-                if (preguntaList.get(index).getRespuesta().get(0).getValor()) {
-                    correctas++;
-                    correctSound();
-                    btnResp1.setBackgroundColor(Color.GREEN);
-                } else {
-                    incorrectas++;
-                    incorrectSound();
-                    btnResp1.setBackgroundColor(Color.RED);
+                        @Override
+                        public void onFinish() {
+                            btnResp1.setEnabled(true);
+                            btnResp2.setEnabled(true);
+                            btnResp3.setEnabled(true);
+                            btnResp4.setEnabled(true);
+                            juega(preguntaList, indexPregunta);
+                        }
+                    }.start();
                 }
-                indexPregunta++;
-                CountDownTimer count = new CountDownTimer(1000, 1000) {
-                    @Override
-                    public void onTick(long l) {
+            });
+            btnResp2.setText(preguntaList.get(index).getRespuesta().get(1).getTexto());
+            btnResp2.setBackgroundResource(R.drawable.botonestrivia);
+            btnResp2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnResp1.setEnabled(false);
+                    btnResp2.setEnabled(false);
+                    btnResp3.setEnabled(false);
+                    btnResp4.setEnabled(false);
+                    if (preguntaList.get(index).getRespuesta().get(1).getValor()) {
+                        correctas++;
+                        correctIncorrectSound(R.raw.correct);
+                        btnResp2.setBackgroundColor(Color.GREEN);
+                    } else {
+                        incorrectas++;
+                        correctIncorrectSound(R.raw.incorrect);
+                        btnResp2.setBackgroundColor(Color.RED);
                     }
+                    indexPregunta++;
+                    CountDownTimer count = new CountDownTimer(1000, 1000) {
+                        @Override
+                        public void onTick(long l) {
 
-                    @Override
-                    public void onFinish() {
-                        btnResp2.setEnabled(true);
-                        btnResp3.setEnabled(true);
-                        btnResp4.setEnabled(true);
-                        juega(preguntaList, indexPregunta);
-                    }
-                }.start();
-            }
-        });
-        btnResp2.setText(preguntaList.get(index).getRespuesta().get(1).getTexto());
-        btnResp2.setBackgroundResource(R.drawable.botonestrivia);
-        btnResp2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnResp1.setEnabled(false);
-                btnResp3.setEnabled(false);
-                btnResp4.setEnabled(false);
-                if (preguntaList.get(index).getRespuesta().get(1).getValor()) {
-                    correctas++;
-                    correctSound();
-                    btnResp2.setBackgroundColor(Color.GREEN);
-                } else {
-                    incorrectas++;
-                    incorrectSound();
-                    btnResp2.setBackgroundColor(Color.RED);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            btnResp1.setEnabled(true);
+                            btnResp2.setEnabled(true);
+                            btnResp3.setEnabled(true);
+                            btnResp4.setEnabled(true);
+                            juega(preguntaList, indexPregunta);
+                        }
+                    }.start();
                 }
-                indexPregunta++;
-                CountDownTimer count = new CountDownTimer(1000, 1000) {
-                    @Override
-                    public void onTick(long l) {
-
+            });
+            btnResp3.setText(preguntaList.get(index).getRespuesta().get(2).getTexto());
+            btnResp3.setBackgroundResource(R.drawable.botonestrivia);
+            btnResp3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnResp1.setEnabled(false);
+                    btnResp2.setEnabled(false);
+                    btnResp3.setEnabled(false);
+                    btnResp4.setEnabled(false);
+                    if (preguntaList.get(index).getRespuesta().get(2).getValor()) {
+                        correctas++;
+                        correctIncorrectSound(R.raw.correct);
+                        btnResp3.setBackgroundColor(Color.GREEN);
+                    } else {
+                        incorrectas++;
+                        correctIncorrectSound(R.raw.incorrect);
+                        btnResp3.setBackgroundColor(Color.RED);
                     }
+                    indexPregunta++;
+                    CountDownTimer count = new CountDownTimer(1000, 1000) {
+                        @Override
+                        public void onTick(long l) {
 
-                    @Override
-                    public void onFinish() {
-                        btnResp1.setEnabled(true);
-                        btnResp3.setEnabled(true);
-                        btnResp4.setEnabled(true);
-                        juega(preguntaList, indexPregunta);
-                    }
-                }.start();
-            }
-        });
-        btnResp3.setText(preguntaList.get(index).getRespuesta().get(2).getTexto());
-        btnResp3.setBackgroundResource(R.drawable.botonestrivia);
-        btnResp3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnResp1.setEnabled(false);
-                btnResp2.setEnabled(false);
-                btnResp4.setEnabled(false);
-                if (preguntaList.get(index).getRespuesta().get(2).getValor()) {
-                    correctas++;
-                    correctSound();
-                    btnResp3.setBackgroundColor(Color.GREEN);
-                } else {
-                    incorrectas++;
-                    incorrectSound();
-                    btnResp3.setBackgroundColor(Color.RED);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            btnResp1.setEnabled(true);
+                            btnResp2.setEnabled(true);
+                            btnResp3.setEnabled(true);
+                            btnResp4.setEnabled(true);
+                            juega(preguntaList, indexPregunta);
+                        }
+                    }.start();
                 }
-                indexPregunta++;
-                CountDownTimer count = new CountDownTimer(1000, 1000) {
-                    @Override
-                    public void onTick(long l) {
-
+            });
+            btnResp4.setText(preguntaList.get(index).getRespuesta().get(3).getTexto());
+            btnResp4.setBackgroundResource(R.drawable.botonestrivia);
+            btnResp4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnResp1.setEnabled(false);
+                    btnResp2.setEnabled(false);
+                    btnResp3.setEnabled(false);
+                    btnResp4.setEnabled(false);
+                    if (preguntaList.get(index).getRespuesta().get(3).getValor()) {
+                        correctas++;
+                        correctIncorrectSound(R.raw.correct);
+                        btnResp4.setBackgroundColor(Color.GREEN);
+                    } else {
+                        incorrectas++;
+                        correctIncorrectSound(R.raw.incorrect);
+                        btnResp4.setBackgroundColor(Color.RED);
                     }
+                    indexPregunta++;
+                    CountDownTimer count = new CountDownTimer(1000, 1000) {
+                        @Override
+                        public void onTick(long l) {
 
-                    @Override
-                    public void onFinish() {
-                        btnResp1.setEnabled(true);
-                        btnResp2.setEnabled(true);
-                        btnResp4.setEnabled(true);
-                        juega(preguntaList, indexPregunta);
-                    }
-                }.start();
-            }
-        });
-        btnResp4.setText(preguntaList.get(index).getRespuesta().get(3).getTexto());
-        btnResp4.setBackgroundResource(R.drawable.botonestrivia);
-        btnResp4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnResp1.setEnabled(false);
-                btnResp2.setEnabled(false);
-                btnResp3.setEnabled(false);
-                if (preguntaList.get(index).getRespuesta().get(3).getValor()) {
-                    correctas++;
-                    correctSound();
-                    btnResp4.setBackgroundColor(Color.GREEN);
-                } else {
-                    incorrectas++;
-                    incorrectSound();
-                    btnResp4.setBackgroundColor(Color.RED);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            btnResp1.setEnabled(true);
+                            btnResp2.setEnabled(true);
+                            btnResp3.setEnabled(true);
+                            btnResp4.setEnabled(true);
+                            juega(preguntaList, indexPregunta);
+                        }
+                    }.start();
                 }
-                indexPregunta++;
-                CountDownTimer count = new CountDownTimer(1000, 1000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        btnResp1.setEnabled(true);
-                        btnResp2.setEnabled(true);
-                        btnResp3.setEnabled(true);
-                        juega(preguntaList, indexPregunta);
-                    }
-                }.start();
-            }
-        });
+            });
+        } else {
+            menu();
+        }
     }
 
     private void menu() {
@@ -278,28 +292,22 @@ public class TriviaActivity extends AppCompatActivity {
         finish();
     }
 
-    private void correctSound() {
-        //Sonido cuando es correcto
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
-        mediaPlayer.start();
-    }
-
-    private void incorrectSound() {
-        //Sonido cuando es incorrecto
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+    private void correctIncorrectSound(int sound) {
+        mediaPlayer.release();
+        mediaPlayer = MediaPlayer.create(this, sound);
         mediaPlayer.start();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (crono1){
+        if (crono1) {
             countDownTimer1.cancel();
         }
         if (crono) {
             countDownTimer.cancel();
         }
-        if (!pressBack){
+        if (!pressBack) {
             finish();
         }
     }
@@ -316,7 +324,7 @@ public class TriviaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        pressBack=true;
+        pressBack = true;
         Intent intent = new Intent(TriviaActivity.this,
                 GamesActivity.class);
         startActivity(intent);
