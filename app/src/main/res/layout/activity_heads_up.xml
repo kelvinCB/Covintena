@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_hu2"
+    android:background="#FFD600"
     tools:context=".HeadsUpActivity">
 
     <TextView
         android:id="@+id/fondo"
-        android:layout_width="582dp"
-        android:layout_height="315dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
         android:background="#40FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,22 +25,22 @@
 
     <TextView
         android:id="@+id/tvRespuesta"
-        android:layout_width="414dp"
-        android:layout_height="137dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="CARGANDO"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="36sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvCronometro"
         app:layout_constraintEnd_toEndOf="@+id/fondo"
         app:layout_constraintStart_toStartOf="@+id/fondo"
         app:layout_constraintTop_toBottomOf="@+id/tvPregunta" />
 
     <TextView
         android:id="@+id/tvCronometro"
-        android:layout_width="92dp"
-        android:layout_height="53dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/blanco"
         android:textSize="40sp"
@@ -43,17 +49,17 @@
         app:layout_constraintEnd_toEndOf="@+id/fondo"
         app:layout_constraintStart_toStartOf="@+id/fondo"
         app:layout_constraintTop_toBottomOf="@+id/tvRespuesta"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvPregunta"
-        android:layout_width="472dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvRespuesta"
         app:layout_constraintEnd_toEndOf="@+id/fondo"
         app:layout_constraintStart_toStartOf="@+id/fondo"
         app:layout_constraintTop_toTopOf="@+id/fondo" />

@@ -6,36 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AudiosActivity">
 
-    <ImageView
-        android:id="@+id/imageView39"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="@+id/Aud6"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView38"
-        app:srcCompat="@drawable/altavoz" />
-
-    <ImageView
-        android:id="@+id/imageView38"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView37"
-        app:srcCompat="@drawable/altavoz" />
-
-    <ImageView
-        android:id="@+id/imageView37"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Aud2"
-        app:srcCompat="@drawable/altavoz" />
-
     <TextView
         android:id="@+id/textView64"
         android:layout_width="0dp"
@@ -51,52 +21,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView34"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="@+id/Aud1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Aud1"
-        app:srcCompat="@drawable/altavoz" />
-
-    <ImageView
-        android:id="@+id/imageView35"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="@+id/Aud1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView34"
-        app:srcCompat="@drawable/altavoz" />
-
-    <ImageView
-        android:id="@+id/imageView36"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/Aud1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView35"
-        app:srcCompat="@drawable/altavoz" />
-
     <Button
-        android:id="@+id/Aud4"
-        android:layout_width="180dp"
-        android:layout_height="183dp"
-        android:background="#BF00C853"
-        android:text="MEDIDAS"
+        android:id="@+id/Aud1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#BFB933FC"
+        android:soundEffectsEnabled="false"
+        android:text="¿QUÉ ES?"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Aud2" />
+        app:layout_constraintBottom_toTopOf="@+id/Aud3"
+        app:layout_constraintEnd_toStartOf="@+id/Aud4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView64" />
+
+    <Button
+        android:id="@+id/Aud3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#BF00BFA5"
+        android:text="ORIGEN"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Aud5"
+        app:layout_constraintEnd_toStartOf="@+id/Aud6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Aud1" />
 
     <Button
         android:id="@+id/Aud5"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#BFFA2929"
         android:text="DETALLES"
@@ -105,26 +61,41 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Aud6"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Aud3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.487" />
 
     <Button
         android:id="@+id/Aud2"
-        android:layout_width="180dp"
-        android:layout_height="183dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#BFFFAB00"
         android:text="SÍNTOMAS"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Aud4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Aud1"
         app:layout_constraintTop_toBottomOf="@+id/textView64" />
 
     <Button
+        android:id="@+id/Aud4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#BF00C853"
+        android:text="MEDIDAS"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Aud6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Aud3"
+        app:layout_constraintTop_toBottomOf="@+id/Aud2" />
+
+    <Button
         android:id="@+id/Aud6"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#BFDD427B"
         android:text="TIPS"
@@ -133,38 +104,18 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/DATO5"
-        app:layout_constraintTop_toBottomOf="@+id/Aud4"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toEndOf="@+id/Aud5"
+        app:layout_constraintTop_toBottomOf="@+id/Aud4" />
 
-    <Button
-        android:id="@+id/Aud1"
-        android:layout_width="180dp"
-        android:layout_height="183dp"
-        android:background="#BFB933FC"
-        android:soundEffectsEnabled="false"
-        android:text="¿QUÉ ES?"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/Aud2"
-        app:layout_constraintHorizontal_bias="0.0"
+    <ImageView
+        android:id="@+id/imageView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView64" />
-
-    <Button
-        android:id="@+id/Aud3"
-        android:layout_width="180dp"
-        android:layout_height="183dp"
-        android:background="#BF00BFA5"
-        android:text="ORIGEN"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/Aud4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Aud1" />
+        app:layout_constraintTop_toBottomOf="@+id/textView64"
+        app:srcCompat="@drawable/altavoz" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
