@@ -22,14 +22,14 @@ public class GameOverActivity extends AppCompatActivity {
 
         //Botones
         btnsalir = findViewById(R.id.Salir);
-        btnvj = findViewById(R.id.VolverJugar);
+        btnvj = findViewById(R.id.btnVolverJugar);
 
         //TextViews
         textViewResultados = findViewById(R.id.textViewResultados);
 
-       int score = getIntent().getExtras().getInt("score");
+        int score = getIntent().getExtras().getInt("score");
 
-       textViewResultados.setText(String.valueOf(score));
+        textViewResultados.setText(String.valueOf(score));
 
         btnvj.setOnClickListener(new View.OnClickListener() {
             @Override

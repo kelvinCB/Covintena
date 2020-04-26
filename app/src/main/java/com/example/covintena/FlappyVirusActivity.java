@@ -12,13 +12,19 @@ import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class FlappyVirusActivity extends View {
+
+    //Game over
+    private GameOverActivity gameOver;
 
     // Canvas
     private int canvasWidth;
     private int canvasHeight;
 
-    // Jerry
+    // Bird
     private Bitmap jerry[] = new Bitmap[2];
     private int jerryX = 10;
     private int jerryY;
@@ -27,8 +33,7 @@ public class FlappyVirusActivity extends View {
     //private Bitmap images;
     private Bitmap virus[] = new Bitmap[2];
     private Bitmap jabon[] = new Bitmap[2];
-    private Bitmap raya_calle[] = new Bitmap[1];
-    private Bitmap scaledrayacalle;
+    private Bitmap raya_calle[] = new Bitmap[2];
     private Bitmap nube[] = new Bitmap[2];
 
     //Position and speed of jabon0 Bitmap
@@ -53,7 +58,7 @@ public class FlappyVirusActivity extends View {
 
     //Position and speed of raya1 Bitmap
     private int rayaLeftX1;
-    private int rayaLeftY1 = -200; // Posicion Inicial de y en la raya de la calle
+    private int rayaLeftY1;
     private int rayaLeftSpeed1 = 15;
 
     //Position and speed of nube0 Bitmap
@@ -61,9 +66,13 @@ public class FlappyVirusActivity extends View {
     private int nubeLeftY0;
     private int nubeLeftSpeed0 = 3;
 
+    //Position and speed of nube1 Bitmap
+    private int nubeLeftX1;
+    private int nubeLeftY1;
+    private int nubeLeftSpeed1 = 15;
+
     // Background
-    private static Bitmap fondoImage;
-    private Bitmap scaledfondoimage;
+    private Bitmap fondoImage;
 
     // Edificios
     private Bitmap edificio1;
@@ -106,8 +115,8 @@ public class FlappyVirusActivity extends View {
         virus[1] = BitmapFactory.decodeResource(getResources(), R.drawable.coronavirs);
 
        // Imagen de la raya de la calle
-          raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
-
+    //    raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
+        raya_calle[1] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
         // Imagen de las nubes
         nube[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
@@ -115,6 +124,10 @@ public class FlappyVirusActivity extends View {
 
         //Imagen del fondo principal donde vuela el muchacho
           fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
+
+        //Imagen de los edificios
+      /*   edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
+          edificio2 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio2);*/
 
         //Imagenes de los corazones
         life[0] = BitmapFactory.decodeResource(getResources(), R.drawable.heart);
@@ -151,8 +164,7 @@ public class FlappyVirusActivity extends View {
         int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
         int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el pajarito //5 en mi cel
 
-        scaledfondoimage = Bitmap.createScaledBitmap(fondoImage,canvasWidth,canvasHeight,false);
-        canvas.drawBitmap(scaledfondoimage,0, 0, null); // Hasta donde llega drawImage de fondo
+        canvas.drawBitmap(fondoImage, 0, 0, null); // Hasta donde llega drawImage de fondo
 
         if (score>=250 && score<300){
             canvas.drawBitmap(edificio2, -350,720,null); // Posicion del edificio 2
@@ -181,12 +193,11 @@ public class FlappyVirusActivity extends View {
         //Cuando la raya llega al final de la pantalla
         if (rayaLeftX1 < -500) {
             rayaLeftX1 = canvasWidth + 20;
-            rayaLeftY1 = 2050; //Posicion y de la raya de la calle
+            rayaLeftY1 = 2050;
         }
 
-        //posicion de la raya de la calle0
-      //  scaledrayacalle = Bitmap.createScaledBitmap(raya_calle[0],canvasWidth/3,60,false);
-        canvas.drawBitmap(raya_calle[0 ], rayaLeftX1, rayaLeftY1, null);
+        //posicion de la raya de la calle1
+        canvas.drawBitmap(raya_calle[1], rayaLeftX1, rayaLeftY1, null);
 
 
         //Animacion de la nube
@@ -248,7 +259,9 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                llamarGameOver();
+                ContenedorFlappyActivity.cambio = true;
+                cambiar = ContenedorFlappyActivity.cambio;
+
             }
         }
 
@@ -269,8 +282,9 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                llamarGameOver();
-
+          //      System.out.println("La vida está en: "+life_count);
+                ContenedorFlappyActivity.cambio = true;
+                cambiar = ContenedorFlappyActivity.cambio;
             }
         }
 
@@ -354,17 +368,17 @@ public class FlappyVirusActivity extends View {
 
         public void cambiarVelocidadJuego(int level){
         if(level == 2) {
-            jabonLeftSpeed = 15;
-            jabonLeftSpeed1 = 20;
-            virusLeftSpeed = 15;
-            virusLeftSpeed1 = 20;
-            rayaLeftSpeed1 = 20;
+            jabonLeftSpeed = 20;
+            jabonLeftSpeed1 = 25;
+            virusLeftSpeed = 20;
+            virusLeftSpeed1 = 25;
+            rayaLeftSpeed1 = 25;
         }else if(level == 3){
-            jabonLeftSpeed = 25;
-            jabonLeftSpeed1 = 30;
-            virusLeftSpeed = 25;
-            virusLeftSpeed1 = 30;
-            rayaLeftSpeed1 = 30;
+            jabonLeftSpeed = 30;
+            jabonLeftSpeed1 = 35;
+            virusLeftSpeed = 30;
+            virusLeftSpeed1 = 35;
+            rayaLeftSpeed1 = 35;
         }
         }
 
@@ -373,17 +387,6 @@ public class FlappyVirusActivity extends View {
         total_score = ((level*300) + score)-300;
 
         return  total_score;
-
-        }
-
-        private  void  llamarGameOver(){
-
-            Intent gameOverIntent = new Intent(getContext(),GameOverActivity.class);
-            gameOverIntent.putExtra("score", FlappyVirusActivity.totalScore());
-            gameOverIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            getContext().startActivity(gameOverIntent);
-            MediaPlayer sb = MediaPlayer.create(getContext(), R.raw.coronado2);
-            sb.start();
 
         }
 

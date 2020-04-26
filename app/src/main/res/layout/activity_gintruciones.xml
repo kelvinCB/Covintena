@@ -170,7 +170,7 @@
                 <TextView
                     android:id="@+id/textView65"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="82dp"
                     android:background="#BFFFD600"
                     android:gravity="center|center_vertical"
                     android:text="JUEGOS"
@@ -231,7 +231,7 @@
                 <TextView
                     android:id="@+id/textView83"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="82dp"
                     android:background="#BF00B8D4"
                     android:gravity="center|center_vertical"
                     android:text="VAGO MODO"

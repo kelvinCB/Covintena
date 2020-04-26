@@ -42,7 +42,6 @@ public class HeadsUpActivity extends AppCompatActivity {
     private Boolean aux;
     private int correctas, incorrectas;
     private Boolean crono, crono1, pressBack, sensorStop, sensorStart;
-    MediaPlayer mediaPlayer;
 
 
     @Override
@@ -56,7 +55,6 @@ public class HeadsUpActivity extends AppCompatActivity {
         correctas=0;
         incorrectas=0;
         aux=true;
-        mediaPlayer = MediaPlayer.create(this, R.raw.correct);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -144,18 +142,18 @@ public class HeadsUpActivity extends AppCompatActivity {
                 public void onSensorChanged(SensorEvent event) {
                     float z = event.values[2];
                     //Evento que se desata al mover el celular hacia abajo
-                    if (z < -7 && aux) {
+                    if (z < -5 && aux) {
                         tvFondo.setBackgroundResource(R.color.verde);
                         aux = false;
                         correctas++;
-                        correctIncorrectSound(R.raw.correct);
+                        correctSound();
                     }
                     //Evento que se desata al mover el celular hacia arriba
-                    if (z > 7 && aux) {
+                    if (z > 5 && aux) {
                         tvFondo.setBackgroundResource(R.color.rojo);
                         aux = false;
                         incorrectas++;
-                        correctIncorrectSound(R.raw.incorrect);
+                        incorrectSound();
                     }
                     //Reinicio de variables
                     if (!aux && z < 2 && z > -2) {
@@ -213,10 +211,18 @@ public class HeadsUpActivity extends AppCompatActivity {
     }
 
 
-    private void correctIncorrectSound(int sound) {
-        mediaPlayer.release();
-        mediaPlayer = MediaPlayer.create(this, sound);
+    private void correctSound(){
+        //Sonido cuando es correcto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
         mediaPlayer.start();
+
+    }
+
+    private void incorrectSound(){
+        //Sonido cuando es incorrecto
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+        mediaPlayer.start();
+
     }
 
     @Override

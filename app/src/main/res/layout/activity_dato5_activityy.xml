@@ -13,7 +13,7 @@
         android:layout_height="82dp"
         android:background="#E53935"
         android:gravity="center|center_vertical"
-        android:text="DETALLES DEL COVID - 19"
+        android:text="DETALLES COVID - 19"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"

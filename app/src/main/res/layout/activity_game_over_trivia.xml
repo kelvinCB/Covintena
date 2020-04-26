@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/textView72"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -49,7 +49,7 @@
     <TextView
         android:id="@+id/textView71"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -70,7 +70,7 @@
     <TextView
         android:id="@+id/tvCorrectasTriv"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
@@ -89,7 +89,7 @@
     <TextView
         android:id="@+id/tvIncorrectasTriv"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
@@ -109,7 +109,7 @@
     <ImageView
         android:id="@+id/imageView41"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/textView71"
         app:layout_constraintEnd_toEndOf="@+id/textView97"
         app:layout_constraintHorizontal_bias="0.0"
@@ -120,7 +120,7 @@
     <Button
         android:id="@+id/volverJugar_tv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
@@ -139,7 +139,7 @@
     <Button
         android:id="@+id/salir_tv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
