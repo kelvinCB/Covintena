@@ -9,16 +9,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class FlappyVirusActivity extends View {
-
-    //Game over
-    private GameOverActivity gameOver;
 
     // Canvas
     private int canvasWidth;
@@ -33,7 +28,7 @@ public class FlappyVirusActivity extends View {
     //private Bitmap images;
     private Bitmap virus[] = new Bitmap[2];
     private Bitmap jabon[] = new Bitmap[2];
-    private Bitmap raya_calle[] = new Bitmap[2];
+    private Bitmap raya_calle[] = new Bitmap[1];
     private Bitmap nube[] = new Bitmap[2];
 
     //Position and speed of jabon0 Bitmap
@@ -58,7 +53,7 @@ public class FlappyVirusActivity extends View {
 
     //Position and speed of raya1 Bitmap
     private int rayaLeftX1;
-    private int rayaLeftY1;
+    private int rayaLeftY1 = -200; // para que la calle no aparezca arriba
     private int rayaLeftSpeed1 = 15;
 
     //Position and speed of nube0 Bitmap
@@ -66,13 +61,12 @@ public class FlappyVirusActivity extends View {
     private int nubeLeftY0;
     private int nubeLeftSpeed0 = 3;
 
-    //Position and speed of nube1 Bitmap
-    private int nubeLeftX1;
-    private int nubeLeftY1;
-    private int nubeLeftSpeed1 = 15;
-
     // Background
     private Bitmap fondoImage;
+    private Bitmap scaledFondoImagen;
+
+    int width = this.getResources().getDisplayMetrics().widthPixels;
+    int height = this.getResources().getDisplayMetrics().heightPixels;
 
     // Edificios
     private Bitmap edificio1;
@@ -94,9 +88,6 @@ public class FlappyVirusActivity extends View {
     // Status Check
     private boolean touch_flg = false;
 
-    //Change Activity
-    public static boolean cambiar = false;
-
     //Sonidos
     public static boolean sonidoTos = false;
     public static boolean sonidoPuntos = false;
@@ -114,20 +105,17 @@ public class FlappyVirusActivity extends View {
         jabon[1] = BitmapFactory.decodeResource(getResources(), R.drawable.jabon);
         virus[1] = BitmapFactory.decodeResource(getResources(), R.drawable.coronavirs);
 
-       // Imagen de la raya de la calle
-    //    raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
-        raya_calle[1] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
+        // Imagen de la raya de la calle
+          raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
         // Imagen de las nubes
         nube[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
         nube[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
 
         //Imagen del fondo principal donde vuela el muchacho
-          fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
 
-        //Imagen de los edificios
-      /*   edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
-          edificio2 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio2);*/
+        fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
+
 
         //Imagenes de los corazones
         life[0] = BitmapFactory.decodeResource(getResources(), R.drawable.heart);
@@ -153,18 +141,21 @@ public class FlappyVirusActivity extends View {
 
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
 
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
 
-        // Bird
-        int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
-        int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el pajarito //5 en mi cel
+        int widthPixels = getResources().getDisplayMetrics().widthPixels;
+        int heightPixels = getResources().getDisplayMetrics().heightPixels;
 
-        canvas.drawBitmap(fondoImage, 0, 0, null); // Hasta donde llega drawImage de fondo
+        // Jerry
+        int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
+        int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el Jerry //5 en mi cel
+
+        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,widthPixels,heightPixels,false);
+        canvas.drawBitmap(scaledFondoImagen, 0, 0, null); // Hasta donde llega drawImage de fondo
 
         if (score>=250 && score<300){
             canvas.drawBitmap(edificio2, -350,720,null); // Posicion del edificio 2
@@ -197,7 +188,7 @@ public class FlappyVirusActivity extends View {
         }
 
         //posicion de la raya de la calle1
-        canvas.drawBitmap(raya_calle[1], rayaLeftX1, rayaLeftY1, null);
+        canvas.drawBitmap(raya_calle[0], rayaLeftX1, rayaLeftY1, null);
 
 
         //Animacion de la nube
@@ -250,7 +241,7 @@ public class FlappyVirusActivity extends View {
         canvas.drawBitmap(jabon[1], jabonLeftX1, jabonLeftY1, null);
 
 
-        // Virus0 toca muchacho
+        // Virus0 toca Jerry
         virusLeftX -= virusLeftSpeed;
         if (hitCheck(virusLeftX, virusLeftY)) {
             virusLeftX = -100;
@@ -259,9 +250,7 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-                ContenedorFlappyActivity.cambio = true;
-                cambiar = ContenedorFlappyActivity.cambio;
-
+              llamarGameOver();
             }
         }
 
@@ -273,7 +262,7 @@ public class FlappyVirusActivity extends View {
         //Posicion del virus0
         canvas.drawBitmap(virus[0], virusLeftX, virusLeftY, null);
 
-        // Virus1 toca muchacho
+        // Virus1 toca Jerry
         virusLeftX1 -= virusLeftSpeed1;
         if (hitCheck(virusLeftX1, virusLeftY1)) {
             virusLeftX1 = -100;
@@ -282,9 +271,7 @@ public class FlappyVirusActivity extends View {
             sonidoTos = ContenedorFlappyActivity.sonidoTos;
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
-          //      System.out.println("La vida está en: "+life_count);
-                ContenedorFlappyActivity.cambio = true;
-                cambiar = ContenedorFlappyActivity.cambio;
+                llamarGameOver();
             }
         }
 
@@ -333,11 +320,6 @@ public class FlappyVirusActivity extends View {
         return true;
     }
 
-    public static boolean cambiarAGameOver (){
-    return cambiar;
-
-    }
-
     public void ponerImagen (){
 
         if(score>=0 && score<50){
@@ -351,22 +333,22 @@ public class FlappyVirusActivity extends View {
         }else if(score>=200 && score<250){
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
         }else if (score>=250 && score<300){
-           fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.fondoflappy);
+            fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.fondoflappy);
             edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
             edificio2 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio2);
         }else if (score>=300 && score<350){
-          score = 0;
-          level++;
-          fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
-          cambiarVelocidadJuego(level);
+            score = 0;
+            level++;
+            fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
+            cambiarVelocidadJuego(level);
         }else{
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
             System.out.println("No encuentro la foto de fondo");
         }
 
-        }
+    }
 
-        public void cambiarVelocidadJuego(int level){
+    public void cambiarVelocidadJuego(int level){
         if(level == 2) {
             jabonLeftSpeed = 20;
             jabonLeftSpeed1 = 25;
@@ -380,14 +362,25 @@ public class FlappyVirusActivity extends View {
             virusLeftSpeed1 = 35;
             rayaLeftSpeed1 = 35;
         }
-        }
+    }
 
-        public static int totalScore(){
+    public static int totalScore(){
 
         total_score = ((level*300) + score)-300;
 
         return  total_score;
 
-        }
+    }
+
+    private void llamarGameOver() {
+
+        Intent gameOverIntent = new Intent(getContext(), GameOverActivity.class);
+        gameOverIntent.putExtra("score", FlappyVirusActivity.totalScore());
+        gameOverIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        getContext().startActivity(gameOverIntent);
+        MediaPlayer sb = MediaPlayer.create(getContext(), R.raw.coronado2);
+        sb.start();
+
+    }
 
 }
