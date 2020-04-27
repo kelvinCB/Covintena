@@ -91,8 +91,8 @@ public class GamesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(GamesActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
-                MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.flappyvirus1);
-                sb.start();
+             /*   MediaPlayer sb = MediaPlayer.create(GamesActivity.this, R.raw.flappyvirus1);
+                sb.start();*/
                 //  sb.setLooping(true);
             }
         });

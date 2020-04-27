@@ -34,8 +34,8 @@ public class GameOverActivity extends AppCompatActivity {
         btnvj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MediaPlayer sb = MediaPlayer.create(GameOverActivity.this, R.raw.sonidoboton);
-                sb.start();
+            /*    MediaPlayer sb = MediaPlayer.create(GameOverActivity.this, R.raw.sonidoboton);
+                sb.start();*/
                 Intent intent = new Intent(GameOverActivity.this, ContenedorFlappyActivity.class);
                 startActivity(intent);
             }

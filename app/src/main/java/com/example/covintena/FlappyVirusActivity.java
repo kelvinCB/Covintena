@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 

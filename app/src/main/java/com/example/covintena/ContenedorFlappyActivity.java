@@ -46,8 +46,8 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                         auxSonidoPuntos = FlappyVirusActivity.sonidoPuntos;
                         if(auxSonidoPuntos == true){
                             FlappyVirusActivity.sonidoPuntos = false;
-                            MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
-                            puntos.start();
+                     /*  MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
+                            puntos.start();*/
                         }
                         if(auxSonidoTos == true){
                             FlappyVirusActivity.sonidoTos = false;
