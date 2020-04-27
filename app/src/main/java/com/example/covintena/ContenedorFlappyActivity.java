@@ -44,12 +44,12 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
                         flappyVirusActivity.invalidate();
                         auxSonidoTos = FlappyVirusActivity.sonidoTos;
                         auxSonidoPuntos = FlappyVirusActivity.sonidoPuntos;
-                        if(auxSonidoPuntos == true){
+                        if (auxSonidoPuntos == true) {
                             FlappyVirusActivity.sonidoPuntos = false;
-                     /*  MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
-                            puntos.start();*/
+                            MediaPlayer puntos = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.puntos);
+                            puntos.start();
                         }
-                        if(auxSonidoTos == true){
+                        if (auxSonidoTos == true) {
                             FlappyVirusActivity.sonidoTos = false;
                             MediaPlayer sb = MediaPlayer.create(ContenedorFlappyActivity.this, R.raw.tos);
                             sb.start();
@@ -60,6 +60,6 @@ public class ContenedorFlappyActivity extends AppCompatActivity {
             }
         }, 0, TIMER_INTERVAL);
 
-}
+    }
 
 }

@@ -27,7 +27,7 @@ public class FlappyVirusActivity extends View {
     //private Bitmap images;
     private Bitmap virus[] = new Bitmap[2];
     private Bitmap jabon[] = new Bitmap[2];
-    private Bitmap raya_calle[] = new Bitmap[1];
+    private Bitmap raya_calle;
     private Bitmap nube[] = new Bitmap[2];
 
     //Position and speed of jabon0 Bitmap
@@ -64,8 +64,8 @@ public class FlappyVirusActivity extends View {
     private Bitmap fondoImage;
     private Bitmap scaledFondoImagen;
 
-    int width = this.getResources().getDisplayMetrics().widthPixels;
-    int height = this.getResources().getDisplayMetrics().heightPixels;
+   /* int width = this.getResources().getDisplayMetrics().widthPixels;
+    int height = this.getResources().getDisplayMetrics().heightPixels;*/
 
     // Edificios
     private Bitmap edificio1;
@@ -94,6 +94,16 @@ public class FlappyVirusActivity extends View {
     public FlappyVirusActivity(Context context) {
         super(context);
 
+        int widthPixels = getResources().getDisplayMetrics().widthPixels;
+        int heightPixels = getResources().getDisplayMetrics().heightPixels;
+
+
+        //Imagen del fondo principal donde vuela el muchacho
+
+        fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
+
+        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,widthPixels,heightPixels,false);
+
         //Imagenes del muchacho con cohete y sin cohete
         jerry[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_no_volando);
         jerry[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nuevo_volando);
@@ -105,15 +115,12 @@ public class FlappyVirusActivity extends View {
         virus[1] = BitmapFactory.decodeResource(getResources(), R.drawable.coronavirs);
 
         // Imagen de la raya de la calle
-          raya_calle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
+          raya_calle = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
         // Imagen de las nubes
         nube[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
         nube[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
 
-        //Imagen del fondo principal donde vuela el muchacho
-
-        fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dia);
 
 
         //Imagenes de los corazones
@@ -146,14 +153,12 @@ public class FlappyVirusActivity extends View {
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
 
-        int widthPixels = getResources().getDisplayMetrics().widthPixels;
-        int heightPixels = getResources().getDisplayMetrics().heightPixels;
 
         // Jerry
         int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
         int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el Jerry //5 en mi cel
 
-        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,widthPixels,heightPixels,false);
+
         canvas.drawBitmap(scaledFondoImagen, 0, 0, null); // Hasta donde llega drawImage de fondo
 
         if (score>=250 && score<300){
@@ -187,7 +192,7 @@ public class FlappyVirusActivity extends View {
         }
 
         //posicion de la raya de la calle1
-        canvas.drawBitmap(raya_calle[0], rayaLeftX1, rayaLeftY1, null);
+        canvas.drawBitmap(raya_calle, rayaLeftX1, rayaLeftY1, null);
 
 
         //Animacion de la nube
@@ -344,6 +349,8 @@ public class FlappyVirusActivity extends View {
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
             System.out.println("No encuentro la foto de fondo");
         }
+
+        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,500,500,false);
 
     }
 

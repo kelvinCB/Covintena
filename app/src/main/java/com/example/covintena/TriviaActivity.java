@@ -46,6 +46,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
+        mediaPlayer = MediaPlayer.create(this, R.raw.correct);
 
         pressBack = false;
         crono = crono1 = false;
