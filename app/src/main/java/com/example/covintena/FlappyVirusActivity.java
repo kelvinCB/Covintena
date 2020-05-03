@@ -18,9 +18,14 @@ public class FlappyVirusActivity extends View {
     private int canvasWidth;
     private int canvasHeight;
 
+    // Calle Height & Width
+
+    private double calleHeight;
+    private double calleWidth;
+
     // Bird
     private Bitmap jerry[] = new Bitmap[2];
-    private int jerryX = 10;
+    private int jerryX = 5; // Distancia horizontal donde inicia Jerry
     private int jerryY;
     private int jerrySpeed;
 
@@ -28,7 +33,7 @@ public class FlappyVirusActivity extends View {
     private Bitmap virus[] = new Bitmap[2];
     private Bitmap jabon[] = new Bitmap[2];
     private Bitmap raya_calle;
-    private Bitmap nube[] = new Bitmap[2];
+    private Bitmap nube;
 
     //Position and speed of jabon0 Bitmap
     private int jabonLeftX;
@@ -55,21 +60,14 @@ public class FlappyVirusActivity extends View {
     private int rayaLeftY1 = -200; // para que la calle no aparezca arriba
     private int rayaLeftSpeed1 = 15;
 
-    //Position and speed of nube0 Bitmap
-    private int nubeLeftX0;
-    private int nubeLeftY0;
-    private int nubeLeftSpeed0 = 3;
+    //Position and speed of nube Bitmap
+    private int nubeLeftX;
+    private int nubeLeftY;
+    private int nubeLeftSpeed = 3;
 
     // Background
     private Bitmap fondoImage;
     private Bitmap scaledFondoImagen;
-
-   /* int width = this.getResources().getDisplayMetrics().widthPixels;
-    int height = this.getResources().getDisplayMetrics().heightPixels;*/
-
-    // Edificios
-    private Bitmap edificio1;
-    private Bitmap edificio2;
 
     // Score
     private Paint scorePaint = new Paint();
@@ -118,10 +116,8 @@ public class FlappyVirusActivity extends View {
           raya_calle = BitmapFactory.decodeResource(getResources(), R.drawable.raya_calle);
 
         // Imagen de las nubes
-        nube[0] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
-        nube[1] = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
-
-
+        nube = BitmapFactory.decodeResource(getResources(), R.drawable.nube);
+        nubeLeftX = (widthPixels/2)-(nube.getWidth()/2); // Donde inicia horizontalmente la nube
 
         //Imagenes de los corazones
         life[0] = BitmapFactory.decodeResource(getResources(), R.drawable.heart);
@@ -129,19 +125,20 @@ public class FlappyVirusActivity extends View {
 
         //Tamano, color y fuente del score
         scorePaint.setColor(Color.BLACK);
-        scorePaint.setTextSize(36);
+        scorePaint.setTextSize((life[0].getHeight()/2)+5); // Tamano de los puntos y + 5 para terminar de ajustar
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
+        scorePaint.setTextAlign(Paint.Align.LEFT);
         scorePaint.setAntiAlias(true);
 
         //Tamaño, color y fuente del nivle
         levelPaint.setColor(Color.BLACK);
-        levelPaint.setTextSize(36);
+        levelPaint.setTextSize((life[0].getHeight()/2)+5); // Tamano de los niveles y + 5 para terminar de ajustar
         levelPaint.setTypeface(Typeface.DEFAULT_BOLD);
         levelPaint.setTextAlign(Paint.Align.CENTER);
         levelPaint.setAntiAlias(true);
 
         // First position.
-        jerryY = 500;
+        jerryY = 300; //Altura donde inicia Jerry
         score = 0;
         life_count = 3;
 
@@ -153,23 +150,21 @@ public class FlappyVirusActivity extends View {
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
 
+        // Altura calle
+        calleHeight  = canvasHeight * 0.18; // donde inicia la la calle es la altura total menos lo que ella ocupa (0.18) el 18% de la pantlla
+
+        // Altura de la nube
+
 
         // Jerry
-        int minBirdY = jerry[0].getHeight(); // Altura donde inicia Jerry
-        int maxBirdY = canvasHeight - jerry[0].getHeight() * 2; //Hasta donde llega a caer el Jerry //5 en mi cel
-
+        int minBirdY = jerry[0].getHeight(); // Hasta donde llega Jerry de alto
+        int maxJerryY = (int) (canvasHeight - (calleHeight + (calleHeight/2)-40)); //Hasta donde llega a caer  Jerry ()-40 para terminar de ajustar
 
         canvas.drawBitmap(scaledFondoImagen, 0, 0, null); // Hasta donde llega drawImage de fondo
 
-        if (score>=250 && score<300){
-            canvas.drawBitmap(edificio2, -350,720,null); // Posicion del edificio 2
-            canvas.drawBitmap(edificio1, 160,720,null); // Posicion del edificio 1
-            canvas.drawBitmap(edificio2, 630,720,null); // Posicion del edificio 2
-        }
-
         jerryY += jerrySpeed;
         if (jerryY < minBirdY) jerryY = minBirdY;
-        if (jerryY > maxBirdY) jerryY = maxBirdY;
+        if (jerryY > maxJerryY) jerryY = maxJerryY;
         jerrySpeed += 2;
 
         if (touch_flg) {
@@ -186,9 +181,9 @@ public class FlappyVirusActivity extends View {
         rayaLeftX1 -= rayaLeftSpeed1;
 
         //Cuando la raya llega al final de la pantalla
-        if (rayaLeftX1 < -500) {
+        if (rayaLeftX1 < -raya_calle.getWidth()) { //Hace desaparecer la raya de la calle
             rayaLeftX1 = canvasWidth + 20;
-            rayaLeftY1 = 2050;
+            rayaLeftY1 = (int) (canvasHeight - (calleHeight/2)); //posicion de la raya de la calle (height - calleheigth /2)
         }
 
         //posicion de la raya de la calle1
@@ -197,16 +192,16 @@ public class FlappyVirusActivity extends View {
 
         //Animacion de la nube
 
-        nubeLeftX0 -= nubeLeftSpeed0;
+         nubeLeftX -= nubeLeftSpeed; // Como la nube avanza a la izquierda comiendoce el ancho del canvas a la velocidad de los pixeles de nubeLeftSpeed
 
         //Cuando la nube0 llega al final de la pantalla
-        if (nubeLeftX0 < -400) {
-            nubeLeftX0 = canvasWidth + 20;
-            nubeLeftY0 = 100;
+        if (nubeLeftX < -nube.getWidth()) { // Hacer desaparecer y volver aparecer la nube
+            nubeLeftX = canvasWidth + 20;
+            nubeLeftY =  life[0].getHeight(); //Posicion altura de la nube
         }
 
         //posicion de la nube0
-        canvas.drawBitmap(nube[0], nubeLeftX0, nubeLeftY0, null);
+        canvas.drawBitmap(nube, nubeLeftX, nubeLeftY, null);
 
         // Jabon0 toca muchacho
         jabonLeftX -= jabonLeftSpeed;
@@ -220,7 +215,7 @@ public class FlappyVirusActivity extends View {
         }
         if (jabonLeftX < 0) {
             jabonLeftX = canvasWidth + 20;
-            jabonLeftY = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
+            jabonLeftY = (int) Math.floor(Math.random() * (maxJerryY - minBirdY)) + minBirdY;
         }
 
         //posicion del jabon0
@@ -238,7 +233,7 @@ public class FlappyVirusActivity extends View {
         }
         if (jabonLeftX1 < 0) {
             jabonLeftX1 = canvasWidth + 20;
-            jabonLeftY1 = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
+            jabonLeftY1 = (int) Math.floor(Math.random() * (maxJerryY - minBirdY)) + minBirdY;
         }
 
         //posicion del jabon1
@@ -261,7 +256,7 @@ public class FlappyVirusActivity extends View {
         // Cuando no hay virus0 genera uno
         if (virusLeftX < 0) { // 0 es la posicion en x que hace desaparecer la imagen
             virusLeftX = canvasWidth + 200;
-            virusLeftY = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
+            virusLeftY = (int) Math.floor(Math.random() * (maxJerryY - minBirdY)) + minBirdY;
         }
         //Posicion del virus0
         canvas.drawBitmap(virus[0], virusLeftX, virusLeftY, null);
@@ -282,7 +277,7 @@ public class FlappyVirusActivity extends View {
         // Cuando no hay virus1 genera uno
         if (virusLeftX1 <= 0) { // 0 es la posicion en x que hace desaparecer la imagen
             virusLeftX1 = canvasWidth + 200;
-            virusLeftY1 = (int) Math.floor(Math.random() * (maxBirdY - minBirdY)) + minBirdY;
+            virusLeftY1 = (int) Math.floor(Math.random() * (maxJerryY - minBirdY)) + minBirdY;
         }
         //Posicion del virus
         canvas.drawBitmap(virus[1], virusLeftX1, virusLeftY1, null);
@@ -295,7 +290,11 @@ public class FlappyVirusActivity extends View {
 
         // Life
         for (int i = 0; i < 3; i++) {
-            int x = (int) ((canvasWidth-300) + life[0].getWidth() * 1.5 * i);// canvasWidth es donde comienza el primer corazon de vida
+            int lifeSize = life[0].getWidth();
+            double lifeSpace = 1.5;
+            int lifeCant = 3;
+
+            int x = (int) ((canvasWidth-(lifeSize * lifeSpace * lifeCant)) + life[0].getWidth() * lifeSpace * i); // posicion de las vidas
             int y = 30;
 
             //Donde dibujar las vidas
@@ -338,8 +337,6 @@ public class FlappyVirusActivity extends View {
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.dasierto);
         }else if (score>=250 && score<300){
             fondoImage = BitmapFactory.decodeResource(getResources(), R.drawable.fondoflappy);
-            edificio1 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio1);
-            edificio2 = BitmapFactory.decodeResource(getResources(),R.drawable.edificio2);
         }else if (score>=300 && score<350){
             score = 0;
             level++;
@@ -350,7 +347,7 @@ public class FlappyVirusActivity extends View {
             System.out.println("No encuentro la foto de fondo");
         }
 
-        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,500,500,false);
+        scaledFondoImagen = Bitmap.createScaledBitmap(fondoImage,canvasWidth,canvasHeight,false);
 
     }
 
