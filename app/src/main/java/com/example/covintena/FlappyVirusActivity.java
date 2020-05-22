@@ -250,6 +250,7 @@ public class FlappyVirusActivity extends View {
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
               llamarGameOver();
+
             }
         }
 
@@ -271,6 +272,7 @@ public class FlappyVirusActivity extends View {
             if (life_count <= 0) {//Cuando no quedan vidas
                 // Game Over
                 llamarGameOver();
+
             }
         }
 
@@ -359,11 +361,23 @@ public class FlappyVirusActivity extends View {
             virusLeftSpeed1 = 25;
             rayaLeftSpeed1 = 25;
         }else if(level == 3){
+            jabonLeftSpeed = 25;
+            jabonLeftSpeed1 = 30;
+            virusLeftSpeed = 25;
+            virusLeftSpeed1 = 30;
+            rayaLeftSpeed1 = 30;
+        }else if(level == 4){
             jabonLeftSpeed = 30;
             jabonLeftSpeed1 = 35;
             virusLeftSpeed = 30;
             virusLeftSpeed1 = 35;
             rayaLeftSpeed1 = 35;
+        }else if(level == 5){
+            jabonLeftSpeed = 35;
+            jabonLeftSpeed1 = 40;
+            virusLeftSpeed = 35;
+            virusLeftSpeed1 = 40;
+            rayaLeftSpeed1 = 40;
         }
     }
 
@@ -383,6 +397,7 @@ public class FlappyVirusActivity extends View {
         getContext().startActivity(gameOverIntent);
         MediaPlayer sb = MediaPlayer.create(getContext(), R.raw.coronado2);
         sb.start();
+        level = 1;
 
     }
 
